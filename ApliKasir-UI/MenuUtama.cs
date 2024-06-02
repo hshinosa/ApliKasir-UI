@@ -16,5 +16,12 @@ namespace ApliKasir_UI
         {
             InitializeComponent();
         }
+
+        private void buttonDataBarang_Click(object sender, EventArgs e)
+        {
+            UIDataBarang dataBarangForm = new UIDataBarang();
+            dataBarangForm.Show();
+            this.Hide();
+        }
     }
 }

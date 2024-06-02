@@ -8,35 +8,35 @@
   {
     "idBarang": 2,
     "namaBarang": "Makanan",
-    "hargaBarang": 15000.0,
-    "jumlahBarang": 100
+    "hargaBarang": 100.0,
+    "jumlahBarang": 20
   },
   {
-    "idBarang": 100,
+    "idBarang": 3,
     "namaBarang": "02",
     "hargaBarang": 2.0,
     "jumlahBarang": 1000
   },
   {
-    "idBarang": 1,
+    "idBarang": 4,
     "namaBarang": "apel",
     "hargaBarang": 2000.0,
     "jumlahBarang": 70
   },
   {
-    "idBarang": 3,
+    "idBarang": 5,
     "namaBarang": "milkita",
     "hargaBarang": 2000.0,
     "jumlahBarang": 12
   },
   {
-    "idBarang": 10,
+    "idBarang": 6,
     "namaBarang": "mouse",
     "hargaBarang": 20000.0,
     "jumlahBarang": 120
   },
   {
-    "idBarang": 4,
+    "idBarang": 7,
     "namaBarang": "giu",
     "hargaBarang": 6000.0,
     "jumlahBarang": 90
@@ -46,5 +46,23 @@
     "namaBarang": "op",
     "hargaBarang": 4000.0,
     "jumlahBarang": 9
+  },
+  {
+    "idBarang": 0,
+    "namaBarang": "Testing",
+    "hargaBarang": 30000.0,
+    "jumlahBarang": 10
+  },
+  {
+    "idBarang": 1,
+    "namaBarang": "Haram",
+    "hargaBarang": 100.0,
+    "jumlahBarang": 20
+  },
+  {
+    "idBarang": 1,
+    "namaBarang": "Test123",
+    "hargaBarang": 12321.0,
+    "jumlahBarang": 1233
   }
 ]

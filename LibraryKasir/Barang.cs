@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace LibraryKasir
 {
@@ -48,6 +49,26 @@ namespace LibraryKasir
                 }
             }
         }
+        public static async Task<List<DataBarang>> GetListBarang(string baseUrl)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    HttpResponseMessage response = await client.GetAsync($"{baseUrl}/DataBarang");
+                    response.EnsureSuccessStatusCode(); // Throw if not a success code
 
+                    string json = await response.Content.ReadAsStringAsync();
+                    List<DataBarang> barangList = JsonSerializer.Deserialize<List<DataBarang>>(json);
+
+                    return barangList;
+                }
+                catch (HttpRequestException ex)
+                {
+                    Console.WriteLine($"Error: {ex.Message}");
+                    return null;
+                }
+            }
+        }
     }
 }
