@@ -1,6 +1,6 @@
 ﻿namespace ApliKasir_UI
 {
-    partial class UIEdit
+    partial class InitializeComponents
     {
         /// <summary>
         /// Required designer variable.
