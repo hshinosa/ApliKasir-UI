@@ -18,6 +18,8 @@ namespace ApliKasir_UI
         private static string jsonFilePath = "json\\barang.json";
         private string baseUrl = "https://localhost:7222";
         private List<DataBarang> databarang;
+        
+
         public UIDataBarang()
         {
             InitializeComponent();
@@ -57,7 +59,7 @@ namespace ApliKasir_UI
         private void buttonSave_Click(object sender, EventArgs e)
         {
             var data = (List<DataBarang>)this.dataGridBarang.DataSource;
-            API.EditJsonBarang.SaveDataToJsonFile(data);
+            API.EditJson.SaveDataBarangToJsonFile(data);
             _ = this.LoadBarang();
         }
 
