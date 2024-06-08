@@ -30,7 +30,7 @@
         {
             panelBg = new Panel();
             label1 = new Label();
-            button4 = new Button();
+            buttonLogOut = new Button();
             buttonEdit = new Button();
             buttonHapus = new Button();
             buttonTambah = new Button();
@@ -38,7 +38,7 @@
             buttonLaporan = new Button();
             label2 = new Label();
             dataGridBarang = new DataGridView();
-            buttonSave = new Button();
+            buttonDeleteBarang = new Button();
             buttonTambahBarang = new Button();
             buttonRefresh = new Button();
             panelBg.SuspendLayout();
@@ -49,7 +49,7 @@
             // 
             panelBg.BackColor = Color.Crimson;
             panelBg.Controls.Add(label1);
-            panelBg.Controls.Add(button4);
+            panelBg.Controls.Add(buttonLogOut);
             panelBg.Controls.Add(buttonEdit);
             panelBg.Controls.Add(buttonHapus);
             panelBg.Controls.Add(buttonTambah);
@@ -72,17 +72,18 @@
             label1.TabIndex = 6;
             label1.Text = "ApliKasir";
             // 
-            // button4
+            // buttonLogOut
             // 
-            button4.BackColor = Color.White;
-            button4.FlatStyle = FlatStyle.Flat;
-            button4.Location = new Point(55, 549);
-            button4.Margin = new Padding(3, 4, 3, 4);
-            button4.Name = "button4";
-            button4.Size = new Size(86, 35);
-            button4.TabIndex = 5;
-            button4.Text = "Logout";
-            button4.UseVisualStyleBackColor = false;
+            buttonLogOut.BackColor = Color.White;
+            buttonLogOut.FlatStyle = FlatStyle.Flat;
+            buttonLogOut.Location = new Point(55, 549);
+            buttonLogOut.Margin = new Padding(3, 4, 3, 4);
+            buttonLogOut.Name = "buttonLogOut";
+            buttonLogOut.Size = new Size(86, 35);
+            buttonLogOut.TabIndex = 5;
+            buttonLogOut.Text = "Logout";
+            buttonLogOut.UseVisualStyleBackColor = false;
+            buttonLogOut.Click += buttonLogOut_Click;
             // 
             // buttonEdit
             // 
@@ -95,6 +96,7 @@
             buttonEdit.TabIndex = 4;
             buttonEdit.Text = "Edit Transaksi/Hutang";
             buttonEdit.UseVisualStyleBackColor = false;
+            buttonEdit.Click += buttonEdit_Click;
             // 
             // buttonHapus
             // 
@@ -107,6 +109,7 @@
             buttonHapus.TabIndex = 3;
             buttonHapus.Text = "Hapus Transaksi/Hutang";
             buttonHapus.UseVisualStyleBackColor = false;
+            buttonHapus.Click += buttonHapus_Click;
             // 
             // buttonTambah
             // 
@@ -119,6 +122,7 @@
             buttonTambah.TabIndex = 2;
             buttonTambah.Text = "Tambah Transaksi/Hutang";
             buttonTambah.UseVisualStyleBackColor = false;
+            buttonTambah.Click += buttonTambah_Click;
             // 
             // buttonDataBarang
             // 
@@ -131,8 +135,6 @@
             buttonDataBarang.Size = new Size(191, 35);
             buttonDataBarang.TabIndex = 1;
             buttonDataBarang.Text = "Data Barang";
-            buttonDataBarang.UseVisualStyleBackColor = false;
-            buttonDataBarang.Click += buttonDataBarang_Click;
             // 
             // buttonLaporan
             // 
@@ -147,6 +149,7 @@
             buttonLaporan.TabIndex = 0;
             buttonLaporan.Text = "Laporan";
             buttonLaporan.UseVisualStyleBackColor = false;
+            buttonLaporan.Click += buttonLaporan_Click;
             // 
             // label2
             // 
@@ -167,17 +170,16 @@
             dataGridBarang.RowHeadersWidth = 51;
             dataGridBarang.Size = new Size(509, 461);
             dataGridBarang.TabIndex = 3;
-            dataGridBarang.CellContentClick += dataGridView1_CellContentClick;
             // 
-            // buttonSave
+            // buttonDeleteBarang
             // 
-            buttonSave.Location = new Point(783, 145);
-            buttonSave.Name = "buttonSave";
-            buttonSave.Size = new Size(94, 29);
-            buttonSave.TabIndex = 4;
-            buttonSave.Text = "Save";
-            buttonSave.UseVisualStyleBackColor = true;
-            buttonSave.Click += buttonSave_Click;
+            buttonDeleteBarang.Location = new Point(783, 145);
+            buttonDeleteBarang.Name = "buttonDeleteBarang";
+            buttonDeleteBarang.Size = new Size(94, 29);
+            buttonDeleteBarang.TabIndex = 4;
+            buttonDeleteBarang.Text = "Delete";
+            buttonDeleteBarang.UseVisualStyleBackColor = true;
+            buttonDeleteBarang.Click += buttonDeleteBarang_Click;
             // 
             // buttonTambahBarang
             // 
@@ -206,7 +208,7 @@
             ClientSize = new Size(914, 600);
             Controls.Add(buttonRefresh);
             Controls.Add(buttonTambahBarang);
-            Controls.Add(buttonSave);
+            Controls.Add(buttonDeleteBarang);
             Controls.Add(dataGridBarang);
             Controls.Add(label2);
             Controls.Add(panelBg);
@@ -227,12 +229,12 @@
         private Button buttonDataBarang;
         private Button buttonTambah;
         private Button buttonHapus;
-        private Button button4;
+        private Button buttonLogOut;
         private Button buttonEdit;
         private Label label1;
         private Label label2;
         private DataGridView dataGridBarang;
-        private Button buttonSave;
+        private Button buttonDeleteBarang;
         private Button buttonTambahBarang;
         private Button buttonRefresh;
     }

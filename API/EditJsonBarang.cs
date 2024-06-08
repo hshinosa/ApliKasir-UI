@@ -21,8 +21,16 @@ namespace API
 
         public static void SaveDataToJsonFile(List<DataBarang> data)
         {
-            string jsonData = JsonConvert.SerializeObject(data, Formatting.Indented);
-            System.IO.File.WriteAllText(jsonFilePath, jsonData);
+            try
+            {
+                string json = JsonConvert.SerializeObject(data, Formatting.Indented);
+                System.IO.File.WriteAllText(jsonFilePath, json);
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show($"An error occurred while saving data: {ex.Message}"); // Show error message
+            }
         }
+
     }
 }

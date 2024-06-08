@@ -33,9 +33,10 @@ namespace ApliKasir_UI
             DataBarang dataBarang = new DataBarang();
             List<DataBarang> dataBarangList = new List<DataBarang>(); // Assuming you have a list of DataBarang objects
 
+            int total = dataBarangList.Count();
             int lastId = dataBarangList.LastOrDefault()?.idBarang ?? 0; // Get the last ID in the list, or 0 if the list is empty
 
-            dataBarang.idBarang = lastId + 1;
+            dataBarang.idBarang = total + 1;
             dataBarang.namaBarang = textBoxNama.Text;
             dataBarang.hargaBarang = double.Parse(textBoxHarga.Text);
             dataBarang.jumlahBarang = int.Parse(textBoxJumlah.Text);

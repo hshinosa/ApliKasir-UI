@@ -134,5 +134,18 @@ namespace ApliKasir_UI
             }
         }
 
+        private void buttonClose_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form != this) // Kecuali form utama (opsional)
+                {
+                    form.Close();
+                }
+            }
+
+            // Menutup form utama (jika diperlukan)
+            this.Close();
+        }
     }
 }
