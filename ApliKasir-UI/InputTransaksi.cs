@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LibraryKasir;
+using System.Text.RegularExpressions;
 
 namespace ApliKasir_UI
 {
@@ -31,9 +32,16 @@ namespace ApliKasir_UI
             int LastId = dataTransaksiList.LastOrDefault()?.idTransaksi ?? 0;
 
             dataTransaksi.idTransaksi = LastId + 1;
-            dataTransaksi.namaBarang = textBox1.Text;
-            dataTransaksi.totalHarga = double.Parse(textBox2.Text);
-            dataTransaksi.jumlahBarang = int.Parse(textBox3.Text);
+            
+            dataTransaksi.namaBarang = Regex.Replace(textBox1.Text.Trim(), "[^a-zA-Z\\s]", "");
+
+            string totakHargaSanitized =
+            Regex.Replace(textBox2.Text.Trim(), "[^0-9.]", "");
+
+            dataTransaksi.totalHarga = double.TryParse(totakHargaSanitized, out double parsedTotalHarga) ? parsedTotalHarga : 0.0;
+
+            string jumlahBarangSanitized = Regex.Replace(textBox3.Text.Trim(), "[^0-9]", "");
+            dataTransaksi.jumlahBarang = int.TryParse(jumlahBarangSanitized, out int parsedJumlah) ? parsedJumlah : 0;
 
             Hitung.CreateTransaksi("https://localhost:7222", dataTransaksi);
 
