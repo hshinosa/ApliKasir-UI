@@ -1,14 +1,8 @@
 [
   {
-    "idTransaksi": 1,
-    "namaBarang": "Minuman",
-    "jumlahBarang": 10,
-    "totalHarga": 250000.0
-  },
-  {
-    "idTransaksi": 2,
-    "namaBarang": "Minuman",
-    "jumlahBarang": 10,
-    "totalHarga": 250000.0
+    "idTransaksi": 3,
+    "namaBarang": "tahu",
+    "jumlahBarang": 20,
+    "totalHarga": 4000.0
   }
 ]

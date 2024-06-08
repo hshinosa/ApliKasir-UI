@@ -16,5 +16,12 @@ namespace ApliKasir_UI
         {
             InitializeComponent();
         }
+
+        private void buttonHapus_Click(object sender, EventArgs e)
+        {
+            UIHapus hapusForm = new UIHapus();
+            hapusForm.Show();
+            this.Hide();
+        }
     }
 }
