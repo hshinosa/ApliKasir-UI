@@ -23,10 +23,10 @@ namespace ApliKasir_UI
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
             DataTransaksi dataTransaksi = new DataTransaksi();
-            List<DataTransaksi> dataTransaksiList = new List<DataTransaksi>();
+            List<DataTransaksi> dataTransaksiList = await Hitung.GetListTransaksi("https://localhost:7222");
 
             int LastId = dataTransaksiList.LastOrDefault()?.idTransaksi ?? 0;
 

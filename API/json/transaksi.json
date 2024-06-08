@@ -2,19 +2,25 @@
   {
     "idTransaksi": 1,
     "namaBarang": "Minuman",
-    "jumlahBarang": 10,
-    "totalHarga": 250000.0
+    "jumlahBarang": 15,
+    "totalHarga": 340000.0
   },
   {
     "idTransaksi": 2,
-    "namaBarang": "Minuman",
-    "jumlahBarang": 10,
-    "totalHarga": 250000.0
+    "namaBarang": "Minuman ",
+    "jumlahBarang": 20,
+    "totalHarga": 230000.0
   },
   {
-    "idTransaksi": 1,
-    "namaBarang": "Minuman",
-    "jumlahBarang": 15,
-    "totalHarga": 340000.0
+    "idTransaksi": 3,
+    "namaBarang": "Makanan",
+    "jumlahBarang": 12,
+    "totalHarga": 200000.0
+  },
+  {
+    "idTransaksi": 4,
+    "namaBarang": "Makanan",
+    "jumlahBarang": 5,
+    "totalHarga": 100000.0
   }
 ]
