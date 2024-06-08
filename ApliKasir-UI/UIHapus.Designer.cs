@@ -39,10 +39,10 @@ namespace ApliKasir_UI
             buttonDataBarang = new Button();
             buttonLaporan = new Button();
             tabel_transaksi = new DataGridView();
-            tombol_hapus = new Button();
             tabel_hutang = new DataGridView();
             label2 = new Label();
             label3 = new Label();
+            button1 = new Button();
             panelBg.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tabel_transaksi).BeginInit();
             ((System.ComponentModel.ISupportInitialize)tabel_hutang).BeginInit();
@@ -99,6 +99,7 @@ namespace ApliKasir_UI
             buttonEdit.TabIndex = 4;
             buttonEdit.Text = "Edit Transaksi/Hutang";
             buttonEdit.UseVisualStyleBackColor = false;
+            buttonEdit.Click += buttonEdit_Click;
             // 
             // buttonHapus
             // 
@@ -164,18 +165,6 @@ namespace ApliKasir_UI
             tabel_transaksi.TabIndex = 1;
             tabel_transaksi.CellContentClick += dataGridView1_CellContentClick;
             // 
-            // tombol_hapus
-            // 
-            tombol_hapus.BackColor = Color.Maroon;
-            tombol_hapus.ForeColor = SystemColors.ButtonHighlight;
-            tombol_hapus.Location = new Point(299, 728);
-            tombol_hapus.Name = "tombol_hapus";
-            tombol_hapus.Size = new Size(112, 34);
-            tombol_hapus.TabIndex = 2;
-            tombol_hapus.Text = "Hapus";
-            tombol_hapus.UseVisualStyleBackColor = false;
-            tombol_hapus.Click += button1_Click;
-            // 
             // tabel_hutang
             // 
             tabel_hutang.AllowUserToOrderColumns = true;
@@ -209,16 +198,28 @@ namespace ApliKasir_UI
             label3.Text = "Transaksi";
             label3.Click += label3_Click;
             // 
+            // button1
+            // 
+            button1.BackColor = Color.Maroon;
+            button1.ForeColor = SystemColors.ButtonHighlight;
+            button1.Location = new Point(299, 728);
+            button1.Name = "button1";
+            button1.Size = new Size(112, 34);
+            button1.TabIndex = 8;
+            button1.Text = "Hapus";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click_1;
+            // 
             // UIHapus
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
             ClientSize = new Size(1143, 774);
+            Controls.Add(button1);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(tabel_hutang);
-            Controls.Add(tombol_hapus);
             Controls.Add(tabel_transaksi);
             Controls.Add(panelBg);
             Margin = new Padding(4, 5, 4, 5);
@@ -231,26 +232,6 @@ namespace ApliKasir_UI
             ((System.ComponentModel.ISupportInitialize)tabel_hutang).EndInit();
             ResumeLayout(false);
             PerformLayout();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (tabel_transaksi.SelectedRows.Count > 0)
-            {
-                foreach (DataGridViewRow row in tabel_transaksi.SelectedRows)
-                {
-                    if (!row.IsNewRow)
-                    {
-                        int id = tabel_transaksi.SelectedRows.Count;
-                        Hitung.DeleteTransaksi(baseUrl, id);
-                        LoadData();
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("Pilih baris yang ingin dihapus.");
-            }
         }
 
         private void UIHapus_Load(object sender, EventArgs e)
@@ -271,9 +252,9 @@ namespace ApliKasir_UI
         private DataGridView tabel_transaksi;
         private DataGridViewTextBoxColumn jenis;
         private DataGridViewTextBoxColumn tanggal;
-        private Button tombol_hapus;
         private DataGridView tabel_hutang;
         private Label label2;
         private Label label3;
+        private Button button1;
     }
 }

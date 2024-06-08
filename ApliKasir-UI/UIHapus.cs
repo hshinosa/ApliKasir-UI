@@ -59,5 +59,51 @@ namespace ApliKasir_UI
         {
 
         }
+
+        private void label2_Click_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonEdit_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if (tabel_transaksi.SelectedRows.Count > 0)
+            {
+                foreach (DataGridViewRow row in tabel_transaksi.SelectedRows)
+                {
+                    if (!row.IsNewRow)
+                    {
+                        var idx = row.Cells["idTransaksi"].Value;
+                        int id = Convert.ToInt32(idx);
+                        Hitung.DeleteTransaksi(baseUrl, id);
+                        MessageBox.Show("Data Berhasil Dihapus");
+                        LoadData();
+                    }
+                }
+            }
+            else if (tabel_hutang.SelectedRows.Count > 0)
+            {
+                foreach (DataGridViewRow row in tabel_hutang.SelectedRows)
+                {
+                    if (!row.IsNewRow)
+                    {
+                        var idx2 = row.Cells["idHutang"].Value;
+                        int id2 = Convert.ToInt32(idx2);
+                        Hutang.DeleteHutang(baseUrl, id2);
+                        MessageBox.Show("Data Berhasil Dihapus");
+                        LoadData();
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Pilih baris yang ingin dihapus.");
+            }
+        }
     }
 }
