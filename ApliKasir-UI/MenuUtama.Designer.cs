@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuUtama));
             panelBg = new Panel();
             label1 = new Label();
             button4 = new Button();
@@ -51,7 +52,7 @@
             // 
             // panelBg
             // 
-            panelBg.BackColor = Color.Crimson;
+            panelBg.BackColor = Color.DarkTurquoise;
             panelBg.Controls.Add(label1);
             panelBg.Controls.Add(button4);
             panelBg.Controls.Add(buttonEdit);
@@ -60,9 +61,9 @@
             panelBg.Controls.Add(buttonDataBarang);
             panelBg.Controls.Add(buttonLaporan);
             panelBg.Location = new Point(0, 0);
-            panelBg.Margin = new Padding(4, 5, 4, 5);
+            panelBg.Margin = new Padding(3, 4, 3, 4);
             panelBg.Name = "panelBg";
-            panelBg.Size = new Size(248, 751);
+            panelBg.Size = new Size(232, 661);
             panelBg.TabIndex = 0;
             // 
             // label1
@@ -70,8 +71,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(12, 15);
-            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Location = new Point(3, 44);
             label1.Name = "label1";
             label1.Size = new Size(231, 65);
             label1.TabIndex = 6;
@@ -79,12 +79,14 @@
             // 
             // button4
             // 
-            button4.BackColor = Color.White;
+            button4.BackColor = Color.Brown;
             button4.FlatStyle = FlatStyle.Flat;
-            button4.Location = new Point(69, 686);
-            button4.Margin = new Padding(4, 5, 4, 5);
+            button4.Font = new Font("Arial Narrow", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button4.ForeColor = SystemColors.ButtonHighlight;
+            button4.Location = new Point(63, 532);
+            button4.Margin = new Padding(3, 4, 3, 4);
             button4.Name = "button4";
-            button4.Size = new Size(108, 44);
+            button4.Size = new Size(86, 39);
             button4.TabIndex = 5;
             button4.Text = "Logout";
             button4.UseVisualStyleBackColor = false;
@@ -94,10 +96,10 @@
             // 
             buttonEdit.BackColor = Color.White;
             buttonEdit.FlatStyle = FlatStyle.Flat;
-            buttonEdit.Location = new Point(4, 439);
-            buttonEdit.Margin = new Padding(4, 5, 4, 5);
+            buttonEdit.Location = new Point(21, 383);
+            buttonEdit.Margin = new Padding(3, 4, 3, 4);
             buttonEdit.Name = "buttonEdit";
-            buttonEdit.Size = new Size(239, 46);
+            buttonEdit.Size = new Size(191, 40);
             buttonEdit.TabIndex = 4;
             buttonEdit.Text = "Edit Transaksi/Hutang";
             buttonEdit.UseVisualStyleBackColor = false;
@@ -107,10 +109,10 @@
             // 
             buttonHapus.BackColor = Color.White;
             buttonHapus.FlatStyle = FlatStyle.Flat;
-            buttonHapus.Location = new Point(4, 381);
-            buttonHapus.Margin = new Padding(4, 5, 4, 5);
+            buttonHapus.Location = new Point(21, 335);
+            buttonHapus.Margin = new Padding(3, 4, 3, 4);
             buttonHapus.Name = "buttonHapus";
-            buttonHapus.Size = new Size(239, 46);
+            buttonHapus.Size = new Size(191, 40);
             buttonHapus.TabIndex = 3;
             buttonHapus.Text = "Hapus Transaksi/Hutang";
             buttonHapus.UseVisualStyleBackColor = false;
@@ -120,10 +122,10 @@
             // 
             buttonTambah.BackColor = Color.White;
             buttonTambah.FlatStyle = FlatStyle.Flat;
-            buttonTambah.Location = new Point(4, 326);
-            buttonTambah.Margin = new Padding(4, 5, 4, 5);
+            buttonTambah.Location = new Point(21, 287);
+            buttonTambah.Margin = new Padding(3, 4, 3, 4);
             buttonTambah.Name = "buttonTambah";
-            buttonTambah.Size = new Size(239, 45);
+            buttonTambah.Size = new Size(191, 40);
             buttonTambah.TabIndex = 2;
             buttonTambah.Text = "Tambah Transaksi/Hutang";
             buttonTambah.UseVisualStyleBackColor = false;
@@ -134,10 +136,10 @@
             buttonDataBarang.BackColor = Color.White;
             buttonDataBarang.FlatStyle = FlatStyle.Flat;
             buttonDataBarang.ForeColor = SystemColors.ControlText;
-            buttonDataBarang.Location = new Point(4, 274);
-            buttonDataBarang.Margin = new Padding(4, 5, 4, 5);
+            buttonDataBarang.Location = new Point(21, 241);
+            buttonDataBarang.Margin = new Padding(3, 4, 3, 4);
             buttonDataBarang.Name = "buttonDataBarang";
-            buttonDataBarang.Size = new Size(239, 44);
+            buttonDataBarang.Size = new Size(191, 39);
             buttonDataBarang.TabIndex = 1;
             buttonDataBarang.Text = "Data Barang";
             buttonDataBarang.UseVisualStyleBackColor = false;
@@ -149,10 +151,10 @@
             buttonLaporan.FlatStyle = FlatStyle.Flat;
             buttonLaporan.Font = new Font("Segoe UI", 9F);
             buttonLaporan.ForeColor = SystemColors.ControlText;
-            buttonLaporan.Location = new Point(4, 225);
-            buttonLaporan.Margin = new Padding(4, 5, 4, 5);
+            buttonLaporan.Location = new Point(21, 199);
+            buttonLaporan.Margin = new Padding(3, 4, 3, 4);
             buttonLaporan.Name = "buttonLaporan";
-            buttonLaporan.Size = new Size(239, 39);
+            buttonLaporan.Size = new Size(191, 34);
             buttonLaporan.TabIndex = 0;
             buttonLaporan.Text = "Laporan";
             buttonLaporan.UseVisualStyleBackColor = false;
@@ -160,9 +162,10 @@
             // labelLaporan
             // 
             labelLaporan.AutoSize = true;
+            labelLaporan.BackColor = SystemColors.MenuHighlight;
             labelLaporan.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            labelLaporan.Location = new Point(619, 15);
-            labelLaporan.Margin = new Padding(4, 0, 4, 0);
+            labelLaporan.ForeColor = SystemColors.Window;
+            labelLaporan.Location = new Point(581, 44);
             labelLaporan.Name = "labelLaporan";
             labelLaporan.Size = new Size(139, 45);
             labelLaporan.TabIndex = 1;
@@ -172,69 +175,85 @@
             // labelStokBarang
             // 
             labelStokBarang.AutoSize = true;
-            labelStokBarang.Location = new Point(380, 160);
-            labelStokBarang.Margin = new Padding(4, 0, 4, 0);
+            labelStokBarang.BackColor = Color.Black;
+            labelStokBarang.Font = new Font("Arial Narrow", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelStokBarang.ForeColor = SystemColors.Window;
+            labelStokBarang.Location = new Point(301, 129);
             labelStokBarang.Name = "labelStokBarang";
-            labelStokBarang.Size = new Size(107, 25);
+            labelStokBarang.Size = new Size(137, 33);
             labelStokBarang.TabIndex = 2;
             labelStokBarang.Text = "Stok Barang";
+           
             // 
             // labelPemasukan
             // 
             labelPemasukan.AutoSize = true;
-            labelPemasukan.Location = new Point(751, 160);
-            labelPemasukan.Margin = new Padding(4, 0, 4, 0);
+            labelPemasukan.BackColor = Color.Black;
+            labelPemasukan.Font = new Font("Arial Narrow", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelPemasukan.ForeColor = SystemColors.Window;
+            labelPemasukan.Location = new Point(598, 129);
             labelPemasukan.Name = "labelPemasukan";
-            labelPemasukan.Size = new Size(82, 25);
+            labelPemasukan.Size = new Size(110, 33);
             labelPemasukan.TabIndex = 3;
             labelPemasukan.Text = "Transaksi";
-            labelPemasukan.Click += labelPemasukan_Click;
+            
             // 
             // labelHutang
             // 
             labelHutang.AutoSize = true;
-            labelHutang.Location = new Point(1138, 160);
-            labelHutang.Margin = new Padding(4, 0, 4, 0);
+            labelHutang.BackColor = Color.Black;
+            labelHutang.Font = new Font("Arial Narrow", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelHutang.ForeColor = SystemColors.Window;
+            labelHutang.Location = new Point(905, 129);
             labelHutang.Name = "labelHutang";
-            labelHutang.Size = new Size(71, 25);
+            labelHutang.Size = new Size(88, 33);
             labelHutang.TabIndex = 5;
             labelHutang.Text = "Hutang";
             // 
             // dataGridBarang
             // 
+            dataGridBarang.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridBarang.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridBarang.Location = new Point(281, 203);
+            dataGridBarang.GridColor = SystemColors.GradientActiveCaption;
+            dataGridBarang.Location = new Point(247, 179);
+            dataGridBarang.Margin = new Padding(2, 3, 2, 3);
             dataGridBarang.Name = "dataGridBarang";
             dataGridBarang.RowHeadersWidth = 62;
-            dataGridBarang.Size = new Size(301, 406);
+            dataGridBarang.Size = new Size(241, 357);
             dataGridBarang.TabIndex = 6;
-            dataGridBarang.CellContentClick += dataGridView1_CellContentClick;
+            
             // 
             // dataGridTransaksi
             // 
+            dataGridTransaksi.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridTransaksi.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridTransaksi.Location = new Point(638, 203);
+            dataGridTransaksi.Location = new Point(526, 179);
+            dataGridTransaksi.Margin = new Padding(2, 3, 2, 3);
             dataGridTransaksi.Name = "dataGridTransaksi";
             dataGridTransaksi.RowHeadersWidth = 62;
-            dataGridTransaksi.Size = new Size(309, 406);
+            dataGridTransaksi.Size = new Size(247, 357);
             dataGridTransaksi.TabIndex = 7;
-            dataGridTransaksi.CellContentClick += dataGridView2_CellContentClick;
+            
             // 
             // dataGridHutang
             // 
+            dataGridHutang.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridHutang.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridHutang.Location = new Point(1013, 203);
+            dataGridHutang.Location = new Point(829, 179);
+            dataGridHutang.Margin = new Padding(2, 3, 2, 3);
             dataGridHutang.Name = "dataGridHutang";
             dataGridHutang.RowHeadersWidth = 62;
-            dataGridHutang.Size = new Size(305, 406);
+            dataGridHutang.Size = new Size(244, 357);
             dataGridHutang.TabIndex = 9;
-            dataGridHutang.CellContentClick += dataGridView4_CellContentClick;
+            
             // 
             // MenuUtama
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 22F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1384, 750);
+            BackColor = Color.Khaki;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            ClientSize = new Size(1107, 660);
             Controls.Add(dataGridHutang);
             Controls.Add(dataGridTransaksi);
             Controls.Add(dataGridBarang);
@@ -243,9 +262,12 @@
             Controls.Add(labelStokBarang);
             Controls.Add(labelLaporan);
             Controls.Add(panelBg);
-            Margin = new Padding(4, 5, 4, 5);
+            Font = new Font("Arial Narrow", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            FormBorderStyle = FormBorderStyle.Fixed3D;
+            Margin = new Padding(3, 4, 3, 4);
             Name = "MenuUtama";
             Text = "ApliKasir";
+           
             panelBg.ResumeLayout(false);
             panelBg.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridBarang).EndInit();

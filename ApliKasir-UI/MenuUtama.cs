@@ -13,90 +13,80 @@ namespace ApliKasir_UI
 {
     public partial class MenuUtama : Form
     {
-        private static string jsonFilePath = "json\\barang.json";
-        private string baseUrl = "https://localhost:7222";
+        private static readonly string jsonFilePath = "json\\barang.json";
+        private readonly string baseUrl = "https://localhost:7222";
         private List<DataBarang> databarang;
         private List<DataTransaksi> datatransaksi;
         private List<DataHutang> datahutang;
+
         public MenuUtama()
         {
             InitializeComponent();
             LoadData();
         }
 
-
         private void buttonDataBarang_Click(object sender, EventArgs e)
         {
-            UIDataBarang dataBarangForm = new UIDataBarang();
-            dataBarangForm.Show();
-            this.Hide();
+            using (UIDataBarang dataBarangForm = new UIDataBarang())
+            {
+                dataBarangForm.ShowDialog();
+            }
         }
 
         private async Task LoadData()
         {
-            //Clear data grid view
-            dataGridBarang.DataSource = null;
-            dataGridTransaksi.DataSource = null;
-            dataGridHutang.DataSource = null;
+            try
+            {
+                //Clear data grid view
+                dataGridBarang.DataSource = null;
+                dataGridTransaksi.DataSource = null;
+                dataGridHutang.DataSource = null;
 
-
-            //Input data barang to data grid view
-            databarang = await Barang.GetListBarang(baseUrl);
-            datatransaksi = await Hitung.GetListTransaksi(baseUrl);
-            datahutang = await Hutang.GetListHutang(baseUrl);
-
-            dataGridBarang.DataSource = databarang;
-            dataGridTransaksi.DataSource = datatransaksi;
-            dataGridHutang.DataSource = datahutang;
-        }
-
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void labelPemasukan_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView4_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
+                //Input data barang to data grid view
+                databarang = await Barang.GetListBarang(baseUrl);
+                datatransaksi = await Hitung.GetListTransaksi(baseUrl);
+                datahutang = await Hutang.GetListHutang(baseUrl);
+                dataGridBarang.DataSource = databarang;
+                dataGridTransaksi.DataSource = datatransaksi;
+                dataGridHutang.DataSource = datahutang;
+            }
+            catch (Exception ex)
+            {
+                // Log the exception or display an error message
+                Console.WriteLine($"Error loading data: {ex.Message}");
+            }
         }
 
         private void buttonTambah_Click(object sender, EventArgs e)
         {
-            UITambah tambahForm = new UITambah();
-            tambahForm.Show();
-            this.Hide();
+            using (UITambah tambahForm = new UITambah())
+            {
+                tambahForm.ShowDialog();
+            }
         }
 
         private void buttonHapus_Click(object sender, EventArgs e)
         {
-            UIHapus hapusForm = new UIHapus();
-            hapusForm.Show();
-            this.Hide();
+            using (UIHapus hapusForm = new UIHapus())
+            {
+                hapusForm.ShowDialog();
+            }
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
-            UIEdit editForm = new UIEdit();
-            editForm.Show();
-            this.Hide();
+            using (UIEdit editForm = new UIEdit())
+            {
+                editForm.ShowDialog();
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Login loginForm = new Login();
-            loginForm.Show();
-            this.Hide();
+            using (Login loginForm = new Login())
+            {
+                loginForm.ShowDialog();
+            }
         }
     }
 }
