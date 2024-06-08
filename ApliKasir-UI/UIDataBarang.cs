@@ -26,8 +26,14 @@ namespace ApliKasir_UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            InputBarang inputBarang = new InputBarang();
-            inputBarang.Show();
+            this.Hide(); // Sembunyikan form saat ini
+
+            using (InputBarang inputBarang = new InputBarang())
+            {
+                inputBarang.ShowDialog(); // Tampilkan form baru sebagai dialog modal
+            }
+
+            this.Show(); // Tampilkan kembali form saat ini setelah form baru ditutup
         }
 
         private void buttonRefresh_Click(object sender, EventArgs e)
@@ -37,38 +43,54 @@ namespace ApliKasir_UI
 
         private void buttonLaporan_Click(object sender, EventArgs e)
         {
-            MenuUtama menuUtama = new MenuUtama();
             this.Hide();
-            menuUtama.Show();
+            using (MenuUtama menuUtama = new MenuUtama())
+            {
+                menuUtama.ShowDialog();
+            }
+            this.Show();
         }
 
         private void buttonTambah_Click(object sender, EventArgs e)
         {
-            UITambah uITambah = new UITambah();
             this.Hide();
-            uITambah.Show();
+            using (UITambah uITambah = new UITambah())
+            {
+                uITambah.ShowDialog();
+            }
+            this.Show();
         }
 
         private void buttonHapus_Click(object sender, EventArgs e)
         {
-            UIHapus uIHapus = new UIHapus();
             this.Hide();
-            uIHapus.Show();
+            using (UIHapus uIHapus = new UIHapus())
+            {
+                uIHapus.ShowDialog();
+            }
+            this.Show();
         }
 
         private void buttonLogOut_Click(object sender, EventArgs e)
         {
-            Login login = new Login();
             this.Hide();
-            login.Show();
+            using (Login login = new Login())
+            {
+                login.ShowDialog();
+            }
+            this.Show();
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
-            UIEdit uIEdit = new UIEdit();
             this.Hide();
-            uIEdit.Show();
+            using (UIEdit uIEdit = new UIEdit())
+            {
+                uIEdit.ShowDialog();
+            }
+            this.Show();
         }
+
 
         private void buttonDeleteBarang_Click(object sender, EventArgs e)
         {
@@ -109,5 +131,41 @@ namespace ApliKasir_UI
             }
         }
 
+        private void buttonEditBarang_Click(object sender, EventArgs e)
+        {
+            if (dataGridBarang.SelectedRows.Count > 0)
+            {
+                // Assuming only one row is selected, get the first selected row
+                DataGridViewRow selectedRow = dataGridBarang.SelectedRows[0];
+                DataBarang selectedDataBarang = selectedRow.DataBoundItem as DataBarang;
+
+                if (selectedDataBarang != null)
+                {
+                    int idBarang = selectedDataBarang.idBarang;
+
+                    this.Hide();
+                    using (EditBarang uIEdit = new EditBarang(idBarang))
+                    {
+                        uIEdit.ShowDialog();
+                    }
+                    this.Show();
+                }
+                else
+                {
+                    MessageBox.Show("No valid data selected.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a row to edit.");
+            }
+
+        }
+
+
+        private void buttonDataBarang_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

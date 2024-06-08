@@ -74,9 +74,13 @@ namespace ApliKasir_UI
                     if (response.IsSuccessStatusCode)
                     {
                         MessageBox.Show("Login sukses!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        MenuUtama menuUtama = new MenuUtama();
-                        menuUtama.Show();
                         this.Hide();
+                        using (MenuUtama menuUtama = new MenuUtama())
+                        {
+                            menuUtama.ShowDialog();
+                        }
+                        this.Show();
+
                     }
                     else
                     {

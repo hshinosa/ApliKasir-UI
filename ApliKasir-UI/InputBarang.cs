@@ -18,20 +18,10 @@ namespace ApliKasir_UI
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private async void buttonInput(object sender, EventArgs e)
         {
             DataBarang dataBarang = new DataBarang();
-            List<DataBarang> dataBarangList = new List<DataBarang>(); // Assuming you have a list of DataBarang objects
+            List<DataBarang> dataBarangList = await Barang.GetListBarang("https://localhost:7222"); // Assuming you have a list of DataBarang objects
 
             int total = dataBarangList.Count();
             int lastId = dataBarangList.LastOrDefault()?.idBarang ?? 0; // Get the last ID in the list, or 0 if the list is empty
@@ -44,11 +34,6 @@ namespace ApliKasir_UI
             Barang.CreateBarang("https://localhost:7222", dataBarang);
 
             this.Hide();
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

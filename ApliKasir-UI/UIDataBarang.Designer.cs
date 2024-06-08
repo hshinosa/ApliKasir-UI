@@ -41,6 +41,7 @@
             buttonDeleteBarang = new Button();
             buttonTambahBarang = new Button();
             buttonRefresh = new Button();
+            buttonEditBarang = new Button();
             panelBg.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridBarang).BeginInit();
             SuspendLayout();
@@ -135,6 +136,8 @@
             buttonDataBarang.Size = new Size(191, 35);
             buttonDataBarang.TabIndex = 1;
             buttonDataBarang.Text = "Data Barang";
+            buttonDataBarang.UseVisualStyleBackColor = false;
+            buttonDataBarang.Click += buttonDataBarang_Click;
             // 
             // buttonLaporan
             // 
@@ -173,7 +176,7 @@
             // 
             // buttonDeleteBarang
             // 
-            buttonDeleteBarang.Location = new Point(783, 145);
+            buttonDeleteBarang.Location = new Point(783, 194);
             buttonDeleteBarang.Name = "buttonDeleteBarang";
             buttonDeleteBarang.Size = new Size(94, 29);
             buttonDeleteBarang.TabIndex = 4;
@@ -193,7 +196,7 @@
             // 
             // buttonRefresh
             // 
-            buttonRefresh.Location = new Point(783, 199);
+            buttonRefresh.Location = new Point(783, 238);
             buttonRefresh.Name = "buttonRefresh";
             buttonRefresh.Size = new Size(94, 29);
             buttonRefresh.TabIndex = 6;
@@ -201,11 +204,22 @@
             buttonRefresh.UseVisualStyleBackColor = true;
             buttonRefresh.Click += buttonRefresh_Click;
             // 
+            // buttonEditBarang
+            // 
+            buttonEditBarang.Location = new Point(783, 145);
+            buttonEditBarang.Name = "buttonEditBarang";
+            buttonEditBarang.Size = new Size(94, 29);
+            buttonEditBarang.TabIndex = 7;
+            buttonEditBarang.Text = "Edit";
+            buttonEditBarang.UseVisualStyleBackColor = true;
+            buttonEditBarang.Click += buttonEditBarang_Click;
+            // 
             // UIDataBarang
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(914, 600);
+            Controls.Add(buttonEditBarang);
             Controls.Add(buttonRefresh);
             Controls.Add(buttonTambahBarang);
             Controls.Add(buttonDeleteBarang);
@@ -237,5 +251,6 @@
         private Button buttonDeleteBarang;
         private Button buttonTambahBarang;
         private Button buttonRefresh;
+        private Button buttonEditBarang;
     }
 }

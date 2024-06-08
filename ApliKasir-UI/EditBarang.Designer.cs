@@ -1,6 +1,6 @@
 ﻿namespace ApliKasir_UI
 {
-    partial class InputBarang
+    partial class EditBarang
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
+            buttonEdit = new Button();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -38,30 +38,30 @@
             textBoxJumlah = new TextBox();
             SuspendLayout();
             // 
-            // button1
+            // buttonEdit
             // 
-            button1.Location = new Point(135, 232);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 0;
-            button1.Text = "Simpan";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += buttonInput;
+            buttonEdit.Location = new Point(137, 271);
+            buttonEdit.Name = "buttonEdit";
+            buttonEdit.Size = new Size(94, 29);
+            buttonEdit.TabIndex = 0;
+            buttonEdit.Text = "Ubah";
+            buttonEdit.UseVisualStyleBackColor = true;
+            buttonEdit.Click += buttonEdit_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI Semibold", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(90, 9);
+            label1.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(111, 9);
             label1.Name = "label1";
-            label1.Size = new Size(182, 38);
+            label1.Size = new Size(169, 38);
             label1.TabIndex = 1;
-            label1.Text = "Input Barang";
+            label1.Text = "Edit Barang";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(37, 66);
+            label2.Location = new Point(59, 108);
             label2.Name = "label2";
             label2.Size = new Size(56, 20);
             label2.TabIndex = 2;
@@ -70,7 +70,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(36, 116);
+            label3.Location = new Point(58, 162);
             label3.Name = "label3";
             label3.Size = new Size(57, 20);
             label3.TabIndex = 3;
@@ -79,7 +79,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(31, 166);
+            label4.Location = new Point(53, 216);
             label4.Name = "label4";
             label4.Size = new Size(62, 20);
             label4.TabIndex = 4;
@@ -87,30 +87,30 @@
             // 
             // textBoxNama
             // 
-            textBoxNama.Location = new Point(104, 66);
+            textBoxNama.Location = new Point(126, 101);
             textBoxNama.Name = "textBoxNama";
-            textBoxNama.Size = new Size(168, 27);
+            textBoxNama.Size = new Size(154, 27);
             textBoxNama.TabIndex = 5;
             // 
             // textBoxHarga
             // 
-            textBoxHarga.Location = new Point(104, 116);
+            textBoxHarga.Location = new Point(126, 159);
             textBoxHarga.Name = "textBoxHarga";
-            textBoxHarga.Size = new Size(168, 27);
+            textBoxHarga.Size = new Size(154, 27);
             textBoxHarga.TabIndex = 6;
             // 
             // textBoxJumlah
             // 
-            textBoxJumlah.Location = new Point(104, 163);
+            textBoxJumlah.Location = new Point(126, 209);
             textBoxJumlah.Name = "textBoxJumlah";
-            textBoxJumlah.Size = new Size(168, 27);
+            textBoxJumlah.Size = new Size(154, 27);
             textBoxJumlah.TabIndex = 7;
             // 
-            // InputBarang
+            // EditBarang
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(375, 311);
+            ClientSize = new Size(402, 364);
             Controls.Add(textBoxJumlah);
             Controls.Add(textBoxHarga);
             Controls.Add(textBoxNama);
@@ -118,16 +118,16 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(button1);
-            Name = "InputBarang";
-            Text = "InputBarang";
+            Controls.Add(buttonEdit);
+            Name = "EditBarang";
+            Text = "EditBarang";
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Button button1;
+        private Button buttonEdit;
         private Label label1;
         private Label label2;
         private Label label3;
