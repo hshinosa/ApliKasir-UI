@@ -15,6 +15,7 @@ namespace ApliKasir_UI
 {
     public partial class UIHapus : Form
     {
+        //deklarasi json untuk transaksi dan hutang
         private static string jsonFilePath = "json\\transaksi.json";
         private static string jsonFilePath2 = "json\\hutang.json";
         private string baseUrl = "https://localhost:7222";
@@ -26,6 +27,7 @@ namespace ApliKasir_UI
             LoadData();
         }
 
+        //LoadData untuk menampilkan data dari json ke datagrid
         private async Task LoadData()
         {
             //Clear data grid view
@@ -72,38 +74,73 @@ namespace ApliKasir_UI
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            if (tabel_transaksi.SelectedRows.Count > 0)
+            //penggunaan try-catch  untuk menangani pengecualian yang mungkin terjadi selama proses penghapusan data
+            try
             {
-                foreach (DataGridViewRow row in tabel_transaksi.SelectedRows)
+                //penggunaan percabangan untuk mengecek apakah ada baris yang dipilih
+                if (tabel_transaksi.SelectedRows.Count > 0)
                 {
-                    if (!row.IsNewRow)
+                    foreach (DataGridViewRow row in tabel_transaksi.SelectedRows)
                     {
-                        var idx = row.Cells["idTransaksi"].Value;
-                        int id = Convert.ToInt32(idx);
-                        Hitung.DeleteTransaksi(baseUrl, id);
-                        MessageBox.Show("Data Berhasil Dihapus");
-                        LoadData();
+                        if (!row.IsNewRow)
+                        {
+                            //mendapatkan nilai id dari kolom idTransaksi dari baris yang dipilih
+                            var idx = row.Cells["idTransaksi"].Value;
+
+                            // Validasi input sebelum konversi
+                            if (idx != null && int.TryParse(idx.ToString(), out int id))
+                            {
+                                //menghapus data dengan method DeleteTransaksi
+                                Hitung.DeleteTransaksi(baseUrl, id);
+                                MessageBox.Show("Data Berhasil Dihapus");
+                                LoadData();
+                            }
+                            else
+                            {
+                                //memanggil MessageBox jika input tidak valid
+                                MessageBox.Show("ID Transaksi tidak valid.");
+                            }
+                        }
                     }
                 }
-            }
-            else if (tabel_hutang.SelectedRows.Count > 0)
-            {
-                foreach (DataGridViewRow row in tabel_hutang.SelectedRows)
+                //penggunaan percabangan untuk mengecek apakah ada baris yang dipilih
+                else if (tabel_hutang.SelectedRows.Count > 0)
                 {
-                    if (!row.IsNewRow)
+                    foreach (DataGridViewRow row in tabel_hutang.SelectedRows)
                     {
-                        var idx2 = row.Cells["idHutang"].Value;
-                        int id2 = Convert.ToInt32(idx2);
-                        Hutang.DeleteHutang(baseUrl, id2);
-                        MessageBox.Show("Data Berhasil Dihapus");
-                        LoadData();
+                        if (!row.IsNewRow)
+                        {
+                            //mendapatkan nilai id dari kolom idTransaksi dari baris yang dipilih
+                            var idx2 = row.Cells["idHutang"].Value;
+
+                            // Validasi input sebelum konversi
+                            if (idx2 != null && int.TryParse(idx2.ToString(), out int id2))
+                            {
+                                //menghapus data dengan method DeleteHutang
+                                Hutang.DeleteHutang(baseUrl, id2);
+                                MessageBox.Show("Data Berhasil Dihapus");
+                                LoadData();
+                            }
+                            else
+                            {
+                                //memanggil MessageBox jika input tidak valid
+                                MessageBox.Show("ID Hutang tidak valid.");
+                            }
+                        }
                     }
                 }
+                else
+                {
+                    //memanggil MessageBox tidak ada baris yang dipilih
+                    MessageBox.Show("Pilih baris yang ingin dihapus.");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Pilih baris yang ingin dihapus.");
+                //Jika terjadi pengecualian, pesan kesalahan yang sesuai ditampilkan kepada pengguna
+                MessageBox.Show("Terjadi kesalahan saat menghapus data: " + ex.Message);
             }
         }
+
     }
 }

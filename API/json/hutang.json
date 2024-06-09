@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "idHutang": 21,
+    "namaPelanggan": "deavan",
+    "namaBarang": "vodka",
+    "jumlahBarang": 20,
+    "totalHarga": 4000.0
+  },
+  {
+    "idHutang": 40,
+    "namaPelanggan": "deavan",
+    "namaBarang": "tuwak",
+    "jumlahBarang": 20,
+    "totalHarga": 4000.0
+  }
+]

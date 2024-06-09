@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "idTransaksi": 34,
+    "namaBarang": "vodka",
+    "jumlahBarang": 23,
+    "totalHarga": 2000.0
+  },
+  {
+    "idTransaksi": 13,
+    "namaBarang": "tahu",
+    "jumlahBarang": 20,
+    "totalHarga": 2000.0
+  }
+]
