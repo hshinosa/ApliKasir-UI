@@ -14,10 +14,17 @@
     "totalHarga": 15000.0
   },
   {
-    "idHutang": 100,
-    "namaPelanggan": "asdasd",
-    "namaBarang": "asdasd",
-    "jumlahBarang": 10,
+    "idHutang": 3,
+    "namaPelanggan": "Salma",
+    "namaBarang": "Minuman",
+    "jumlahBarang": 10000,
     "totalHarga": 10000.0
+  },
+  {
+    "idHutang": 4,
+    "namaPelanggan": "Salma",
+    "namaBarang": "Makanan",
+    "jumlahBarang": 30000,
+    "totalHarga": 30000.0
   }
 ]

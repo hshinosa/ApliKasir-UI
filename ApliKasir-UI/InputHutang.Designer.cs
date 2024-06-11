@@ -1,6 +1,6 @@
 ﻿namespace ApliKasir_UI
 {
-    partial class InputTransaksi
+    partial class InputHutang
     {
         /// <summary>
         /// Required designer variable.
@@ -32,9 +32,11 @@
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
+            label5 = new Label();
             textBox1 = new TextBox();
             textBox2 = new TextBox();
             textBox3 = new TextBox();
+            textBox4 = new TextBox();
             button1 = new Button();
             SuspendLayout();
             // 
@@ -42,87 +44,103 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(110, 18);
+            label1.Location = new Point(146, 24);
             label1.Name = "label1";
-            label1.Size = new Size(118, 21);
-            label1.TabIndex = 0;
-            label1.Text = "Input Transaksi";
+            label1.Size = new Size(107, 21);
+            label1.TabIndex = 1;
+            label1.Text = "Input Hutang";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(16, 64);
+            label2.Location = new Point(34, 72);
             label2.Name = "label2";
-            label2.Size = new Size(88, 15);
-            label2.TabIndex = 1;
-            label2.Text = "Nama  Barang :";
+            label2.Size = new Size(107, 15);
+            label2.TabIndex = 2;
+            label2.Text = "Nama  Pelanggan :";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(16, 141);
+            label3.Location = new Point(34, 111);
             label3.Name = "label3";
-            label3.Size = new Size(51, 15);
-            label3.TabIndex = 2;
-            label3.Text = "Jumlah :";
+            label3.Size = new Size(88, 15);
+            label3.TabIndex = 3;
+            label3.Text = "Nama  Barang :";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(16, 103);
+            label4.Location = new Point(34, 148);
             label4.Name = "label4";
             label4.Size = new Size(45, 15);
-            label4.TabIndex = 3;
+            label4.TabIndex = 4;
             label4.Text = "Harga :";
-            label4.Click += label4_Click;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(34, 185);
+            label5.Name = "label5";
+            label5.Size = new Size(51, 15);
+            label5.TabIndex = 5;
+            label5.Text = "Jumlah :";
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(110, 61);
+            textBox1.Location = new Point(147, 69);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(174, 23);
-            textBox1.TabIndex = 4;
+            textBox1.TabIndex = 6;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(110, 100);
+            textBox2.Location = new Point(147, 108);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(174, 23);
-            textBox2.TabIndex = 5;
+            textBox2.TabIndex = 7;
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(110, 138);
+            textBox3.Location = new Point(146, 145);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(174, 23);
-            textBox3.TabIndex = 6;
+            textBox3.TabIndex = 8;
+            // 
+            // textBox4
+            // 
+            textBox4.Location = new Point(147, 182);
+            textBox4.Name = "textBox4";
+            textBox4.Size = new Size(174, 23);
+            textBox4.TabIndex = 9;
             // 
             // button1
             // 
-            button1.Location = new Point(119, 189);
+            button1.Location = new Point(146, 222);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
-            button1.TabIndex = 7;
+            button1.TabIndex = 10;
             button1.Text = "Simpan";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
-            // InputTransaksi
+            // InputHutang
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(335, 233);
+            ClientSize = new Size(429, 257);
             Controls.Add(button1);
+            Controls.Add(textBox4);
             Controls.Add(textBox3);
             Controls.Add(textBox2);
             Controls.Add(textBox1);
+            Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Name = "InputTransaksi";
-            Text = "InputTransaksi";
-            Load += InputTransaksi_Load;
+            Name = "InputHutang";
+            Text = "InputHutang";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -133,9 +151,11 @@
         private Label label2;
         private Label label3;
         private Label label4;
+        private Label label5;
         private TextBox textBox1;
         private TextBox textBox2;
         private TextBox textBox3;
+        private TextBox textBox4;
         private Button button1;
     }
 }

@@ -28,5 +28,17 @@
     "namaBarang": "Makanan",
     "jumlahBarang": 10,
     "totalHarga": 250000.0
+  },
+  {
+    "idTransaksi": 6,
+    "namaBarang": "Makanan",
+    "jumlahBarang": 3,
+    "totalHarga": 10000.0
+  },
+  {
+    "idTransaksi": 7,
+    "namaBarang": "Minuman",
+    "jumlahBarang": 2,
+    "totalHarga": 12000.0
   }
 ]

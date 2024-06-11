@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LibraryKasir;
-using System.Text.RegularExpressions;
 
 namespace ApliKasir_UI
 {
@@ -19,33 +14,60 @@ namespace ApliKasir_UI
             InitializeComponent();
         }
 
+        
         private void label4_Click(object sender, EventArgs e)
         {
-
+           
         }
 
+        // Event handler untuk klik pada tombol
         private async void button1_Click(object sender, EventArgs e)
         {
-            DataTransaksi dataTransaksi = new DataTransaksi();
-            List<DataTransaksi> dataTransaksiList = await Hitung.GetListTransaksi("https://localhost:7222");
+            var dataTransaksi = new DataTransaksi();
 
-            int LastId = dataTransaksiList.LastOrDefault()?.idTransaksi ?? 0;
+            // Mengambil daftar data transaksi dari API
+            var dataTransaksiList = await Hitung.GetListTransaksi("https://localhost:7222");
 
-            dataTransaksi.idTransaksi = LastId + 1;
-            
-            dataTransaksi.namaBarang = Regex.Replace(textBox1.Text.Trim(), "[^a-zA-Z\\s]", "");
+            // Menentukan ID transaksi terakhir dan menambah 1 untuk ID baru
+            int lastId = dataTransaksiList.LastOrDefault()?.idTransaksi ?? 0;
+            dataTransaksi.idTransaksi = lastId + 1;
 
-            string totakHargaSanitized =
-            Regex.Replace(textBox2.Text.Trim(), "[^0-9.]", "");
+            // Membersihkan dan menyaring input pengguna
+            dataTransaksi.namaBarang = SanitizeInput(textBox1.Text, "[^a-zA-Z\\s]");
 
-            dataTransaksi.totalHarga = double.TryParse(totakHargaSanitized, out double parsedTotalHarga) ? parsedTotalHarga : 0.0;
+            // Mengubah input harga dan jumlah barang menjadi nilai numerik
+            dataTransaksi.totalHarga = ParseDouble(SanitizeInput(textBox2.Text, "[^0-9.]"));
+            dataTransaksi.jumlahBarang = ParseInt(SanitizeInput(textBox3.Text, "[^0-9]"));
 
-            string jumlahBarangSanitized = Regex.Replace(textBox3.Text.Trim(), "[^0-9]", "");
-            dataTransaksi.jumlahBarang = int.TryParse(jumlahBarangSanitized, out int parsedJumlah) ? parsedJumlah : 0;
+            // Mengirim data transaksi yang baru dibuat ke API
+            await Hitung.CreateTransaksi("https://localhost:7222", dataTransaksi);
 
-            Hitung.CreateTransaksi("https://localhost:7222", dataTransaksi);
-
+            // Menyembunyikan form setelah data transaksi berhasil ditambahkan
             this.Hide();
+        }
+
+        
+        private void InputTransaksi_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        // Fungsi untuk membersihkan input menggunakan regex
+        private string SanitizeInput(string input, string pattern)
+        {
+            return Regex.Replace(input.Trim(), pattern, "");
+        }
+
+        // Fungsi untuk mengubah string menjadi double
+        private double ParseDouble(string input)
+        {
+            return double.TryParse(input, out double result) ? result : 0.0;
+        }
+
+        // Fungsi untuk mengubah string menjadi integer
+        private int ParseInt(string input)
+        {
+            return int.TryParse(input, out int result) ? result : 0;
         }
     }
 }
