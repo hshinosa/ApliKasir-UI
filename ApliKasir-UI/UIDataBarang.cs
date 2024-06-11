@@ -1,171 +1,127 @@
 ﻿using LibraryKasir;
-using System.Windows.Forms;
 
 namespace ApliKasir_UI
 {
     public partial class UIDataBarang : Form
     {
-        private static string jsonFilePath = "json\\barang.json";
-        private string baseUrl = "https://localhost:7222";
-        private List<DataBarang> listDataBarang;
+        private const string _baseUrl = "https://localhost:7222";
+        private List<DataBarang> _listDataBarang;
+
+        // Konstruktor untuk menginisialisasi komponen dan memuat data barang
         public UIDataBarang()
         {
             InitializeComponent();
-            _ = this.LoadBarang();
+            _ = LoadBarang();
         }
 
+        // Metode untuk memuat data barang dari file JSON
         private async Task LoadBarang()
         {
-            //Clear data grid view
             dataGridBarang.DataSource = null;
-
-            //Input data barang to data grid view
-            listDataBarang = await Barang.GetListBarang(baseUrl);
-            dataGridBarang.DataSource = listDataBarang;
+            _listDataBarang = await Barang.GetListBarang(_baseUrl);
+            dataGridBarang.DataSource = _listDataBarang;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Hide(); // Sembunyikan form saat ini
-
-            using (InputBarang inputBarang = new InputBarang())
-            {
-                inputBarang.ShowDialog(); // Tampilkan form baru sebagai dialog modal
-            }
-
-            this.Show(); // Tampilkan kembali form saat ini setelah form baru ditutup
-        }
-
-        private void buttonRefresh_Click(object sender, EventArgs e)
-        {
-            _ = this.LoadBarang();
-        }
-
-        private void buttonLaporan_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            using (MenuUtama menuUtama = new MenuUtama())
-            {
-                menuUtama.ShowDialog();
-            }
-            this.Show();
-        }
-
-        private void buttonTambah_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            using (UITambah uITambah = new UITambah())
-            {
-                uITambah.ShowDialog();
-            }
-            this.Show();
-        }
-
-        private void buttonHapus_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            using (UIHapus uIHapus = new UIHapus())
-            {
-                uIHapus.ShowDialog();
-            }
-            this.Show();
-        }
-
-        private void buttonLogOut_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            using (Login login = new Login())
-            {
-                login.ShowDialog();
-            }
-            this.Show();
-        }
-
-        private void buttonEdit_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            using (UIEdit uIEdit = new UIEdit())
-            {
-                uIEdit.ShowDialog();
-            }
-            this.Show();
-        }
-
-
-        private void buttonDeleteBarang_Click(object sender, EventArgs e)
+        // Event handler untuk klik tombol hapus barang
+        private void ButtonDeleteBarang_Click(object sender, EventArgs e)
         {
             if (dataGridBarang.SelectedRows.Count > 0)
             {
-                // Create a list to store the selected items to be deleted
-                List<DataBarang> itemsToRemove = new List<DataBarang>();
-
-                // Collect the selected items to be deleted
-                foreach (DataGridViewRow row in dataGridBarang.SelectedRows)
-                {
-                    DataBarang selectedDataBarang = row.DataBoundItem as DataBarang;
-                    if (selectedDataBarang != null)
-                    {
-                        // Add to list for local removal
-                        itemsToRemove.Add(selectedDataBarang);
-                        // Call the API to delete the barang based on idBarang
-                        Barang.DeleteBarang(baseUrl, selectedDataBarang.idBarang);
-                    }
-                }
-
-                // Remove the selected items from listDataBarang
-                foreach (var item in itemsToRemove)
-                {
-                    listDataBarang.Remove(item);
-                }
-
-                // Save the updated list to the JSON file
-                API.EditJsonBarang.SaveDataToJsonFile(listDataBarang);
-
-                // Refresh the DataGridView
-                dataGridBarang.DataSource = null;
-                dataGridBarang.DataSource = listDataBarang;
+                DeleteSelectedBarangs();
+                UpdateDataGrid();
             }
             else
             {
-                MessageBox.Show("Please select a row to delete.");
+                MessageBox.Show("Silakan pilih baris yang akan dihapus.");
             }
         }
 
-        private void buttonEditBarang_Click(object sender, EventArgs e)
+        // Event handler untuk klik tombol edit barang
+        private void ButtonEditBarang_Click(object sender, EventArgs e)
         {
             if (dataGridBarang.SelectedRows.Count > 0)
             {
-                // Assuming only one row is selected, get the first selected row
-                DataGridViewRow selectedRow = dataGridBarang.SelectedRows[0];
-                DataBarang selectedDataBarang = selectedRow.DataBoundItem as DataBarang;
-
-                if (selectedDataBarang != null)
-                {
-                    int idBarang = selectedDataBarang.idBarang;
-
-                    this.Hide();
-                    using (EditBarang uIEdit = new EditBarang(idBarang))
-                    {
-                        uIEdit.ShowDialog();
-                    }
-                    this.Show();
-                }
-                else
-                {
-                    MessageBox.Show("No valid data selected.");
-                }
+                EditSelectedBarang();
             }
             else
             {
-                MessageBox.Show("Please select a row to edit.");
+                MessageBox.Show("Silakan pilih baris yang akan diedit.");
+            }
+        }
+
+        // Metode untuk menghapus barang yang dipilih dari daftar dan memperbarui data grid
+        private void DeleteSelectedBarangs()
+        {
+            var itemsToRemove = new List<DataBarang>();
+
+            foreach (DataGridViewRow row in dataGridBarang.SelectedRows)
+            {
+                if (row.DataBoundItem is DataBarang selectedDataBarang)
+                {
+                    itemsToRemove.Add(selectedDataBarang);
+                    _ = Barang.DeleteBarang(_baseUrl, selectedDataBarang.idBarang);
+                }
             }
 
+            foreach (var item in itemsToRemove)
+            {
+                _listDataBarang.Remove(item);
+            }
+
+            API.EditJsonBarang.SaveDataToJsonFile(_listDataBarang);
         }
 
-
-        private void buttonDataBarang_Click(object sender, EventArgs e)
+        // Metode untuk memperbarui data grid dengan daftar data barang yang telah diperbarui
+        private void UpdateDataGrid()
         {
-
+            dataGridBarang.DataSource = null;
+            dataGridBarang.DataSource = _listDataBarang;
         }
+
+        // Metode untuk mengedit barang yang dipilih dan menampilkan form EditBarang
+        private void EditSelectedBarang()
+        {
+            DataGridViewRow selectedRow = dataGridBarang.SelectedRows[0];
+            if (selectedRow.DataBoundItem is DataBarang selectedDataBarang)
+            {
+                int idBarang = selectedDataBarang.idBarang;
+                this.Hide();
+                using (EditBarang editBarang = new EditBarang(idBarang))
+                {
+                    editBarang.ShowDialog();
+                }
+                this.Show();
+            }
+            else
+            {
+                MessageBox.Show("Data yang dipilih tidak valid.");
+            }
+        }
+
+        // Metode generik untuk menampilkan form tipe T
+        private void ShowForm<T>() where T : Form, new()
+        {
+            this.Hide();
+            using (T form = new T())
+            {
+                form.ShowDialog();
+            }
+            this.Show();
+        }
+
+        // Event handler untuk berpindah menu
+        private void buttonTambahBarang_Click(object sender, EventArgs e) => ShowForm<InputBarang>();
+
+        private void buttonRefresh_Click(object sender, EventArgs e) => _ = LoadBarang();
+
+        private void buttonLaporan_Click(object sender, EventArgs e) => ShowForm<MenuUtama>();
+
+        private void buttonTambah_Click(object sender, EventArgs e) => ShowForm<UITambah>();
+
+        private void buttonHapus_Click(object sender, EventArgs e) => ShowForm<UIHapus>();
+
+        private void buttonLogOut_Click(object sender, EventArgs e) => ShowForm<Login>();
+
+        private void buttonEdit_Click(object sender, EventArgs e) => ShowForm<UIEdit>();
     }
 }

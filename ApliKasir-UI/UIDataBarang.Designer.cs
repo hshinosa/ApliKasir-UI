@@ -136,8 +136,7 @@
             buttonDataBarang.Size = new Size(191, 35);
             buttonDataBarang.TabIndex = 1;
             buttonDataBarang.Text = "Data Barang";
-            buttonDataBarang.UseVisualStyleBackColor = false;
-            buttonDataBarang.Click += buttonDataBarang_Click;
+            buttonDataBarang.UseVisualStyleBackColor = false;            
             // 
             // buttonLaporan
             // 
@@ -182,7 +181,7 @@
             buttonDeleteBarang.TabIndex = 4;
             buttonDeleteBarang.Text = "Delete";
             buttonDeleteBarang.UseVisualStyleBackColor = true;
-            buttonDeleteBarang.Click += buttonDeleteBarang_Click;
+            buttonDeleteBarang.Click += ButtonDeleteBarang_Click;
             // 
             // buttonTambahBarang
             // 
@@ -192,7 +191,7 @@
             buttonTambahBarang.TabIndex = 5;
             buttonTambahBarang.Text = "Tambah";
             buttonTambahBarang.UseVisualStyleBackColor = true;
-            buttonTambahBarang.Click += button1_Click;
+            buttonTambahBarang.Click += buttonTambahBarang_Click;
             // 
             // buttonRefresh
             // 
@@ -212,7 +211,7 @@
             buttonEditBarang.TabIndex = 7;
             buttonEditBarang.Text = "Edit";
             buttonEditBarang.UseVisualStyleBackColor = true;
-            buttonEditBarang.Click += buttonEditBarang_Click;
+            buttonEditBarang.Click += ButtonEditBarang_Click;
             // 
             // UIDataBarang
             // 

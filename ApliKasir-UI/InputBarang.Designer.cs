@@ -46,7 +46,7 @@
             button1.TabIndex = 0;
             button1.Text = "Simpan";
             button1.UseVisualStyleBackColor = true;
-            button1.Click += buttonInput;
+            button1.Click += ButtonInput_Click;
             // 
             // label1
             // 
