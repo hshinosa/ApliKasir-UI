@@ -226,7 +226,7 @@
             Margin = new Padding(4, 5, 4, 5);
             Name = "UIDataBarang";
             Text = "ApliKasir";
-            Load += UIDataBarang_Load;
+           
             panelBg.ResumeLayout(false);
             panelBg.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridBarang).EndInit();

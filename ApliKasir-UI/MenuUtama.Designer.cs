@@ -183,7 +183,6 @@
             labelStokBarang.Size = new Size(137, 33);
             labelStokBarang.TabIndex = 2;
             labelStokBarang.Text = "Stok Barang";
-           
             // 
             // labelPemasukan
             // 
@@ -196,7 +195,6 @@
             labelPemasukan.Size = new Size(110, 33);
             labelPemasukan.TabIndex = 3;
             labelPemasukan.Text = "Transaksi";
-            
             // 
             // labelHutang
             // 
@@ -215,13 +213,12 @@
             dataGridBarang.BackgroundColor = SystemColors.GradientInactiveCaption;
             dataGridBarang.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridBarang.GridColor = SystemColors.GradientActiveCaption;
-            dataGridBarang.Location = new Point(247, 179);
+            dataGridBarang.Location = new Point(237, 179);
             dataGridBarang.Margin = new Padding(2, 3, 2, 3);
             dataGridBarang.Name = "dataGridBarang";
             dataGridBarang.RowHeadersWidth = 62;
-            dataGridBarang.Size = new Size(241, 357);
+            dataGridBarang.Size = new Size(285, 357);
             dataGridBarang.TabIndex = 6;
-            
             // 
             // dataGridTransaksi
             // 
@@ -231,9 +228,8 @@
             dataGridTransaksi.Margin = new Padding(2, 3, 2, 3);
             dataGridTransaksi.Name = "dataGridTransaksi";
             dataGridTransaksi.RowHeadersWidth = 62;
-            dataGridTransaksi.Size = new Size(247, 357);
+            dataGridTransaksi.Size = new Size(299, 357);
             dataGridTransaksi.TabIndex = 7;
-            
             // 
             // dataGridHutang
             // 
@@ -243,9 +239,8 @@
             dataGridHutang.Margin = new Padding(2, 3, 2, 3);
             dataGridHutang.Name = "dataGridHutang";
             dataGridHutang.RowHeadersWidth = 62;
-            dataGridHutang.Size = new Size(244, 357);
+            dataGridHutang.Size = new Size(271, 357);
             dataGridHutang.TabIndex = 9;
-            
             // 
             // MenuUtama
             // 
@@ -267,7 +262,6 @@
             Margin = new Padding(3, 4, 3, 4);
             Name = "MenuUtama";
             Text = "ApliKasir";
-           
             panelBg.ResumeLayout(false);
             panelBg.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridBarang).EndInit();

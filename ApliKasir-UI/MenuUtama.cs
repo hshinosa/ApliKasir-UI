@@ -1,4 +1,5 @@
-﻿using LibraryKasir;
+﻿
+using LibraryKasir;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace ApliKasir_UI
 {
     public partial class MenuUtama : Form
@@ -18,13 +18,11 @@ namespace ApliKasir_UI
         private List<DataBarang> databarang;
         private List<DataTransaksi> datatransaksi;
         private List<DataHutang> datahutang;
-
         public MenuUtama()
         {
             InitializeComponent();
             LoadData();
         }
-
         private void buttonDataBarang_Click(object sender, EventArgs e)
         {
             using (UIDataBarang dataBarangForm = new UIDataBarang())
@@ -32,16 +30,16 @@ namespace ApliKasir_UI
                 dataBarangForm.ShowDialog();
             }
         }
-
+        // mengambil data dari Json
         private async Task LoadData()
         {
+            //Implementasi design by contract 
             try
             {
                 //Clear data grid view
                 dataGridBarang.DataSource = null;
                 dataGridTransaksi.DataSource = null;
                 dataGridHutang.DataSource = null;
-
                 //Input data barang to data grid view
                 databarang = await Barang.GetListBarang(baseUrl);
                 datatransaksi = await Hitung.GetListTransaksi(baseUrl);
@@ -56,7 +54,6 @@ namespace ApliKasir_UI
                 Console.WriteLine($"Error loading data: {ex.Message}");
             }
         }
-
         private void buttonTambah_Click(object sender, EventArgs e)
         {
             using (UITambah tambahForm = new UITambah())
@@ -64,7 +61,6 @@ namespace ApliKasir_UI
                 tambahForm.ShowDialog();
             }
         }
-
         private void buttonHapus_Click(object sender, EventArgs e)
         {
             using (UIHapus hapusForm = new UIHapus())
@@ -72,7 +68,6 @@ namespace ApliKasir_UI
                 hapusForm.ShowDialog();
             }
         }
-
         private void buttonEdit_Click(object sender, EventArgs e)
         {
             using (UIEdit editForm = new UIEdit())
@@ -80,7 +75,6 @@ namespace ApliKasir_UI
                 editForm.ShowDialog();
             }
         }
-
         private void button4_Click(object sender, EventArgs e)
         {
             using (Login loginForm = new Login())
