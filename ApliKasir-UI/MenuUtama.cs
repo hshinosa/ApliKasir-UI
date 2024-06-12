@@ -12,9 +12,18 @@ namespace ApliKasir_UI
 {
     public partial class MenuUtama : Form
     {
+
+        //Constructor
         public MenuUtama()
         {
             InitializeComponent();
+        }
+
+        private void buttonEdit_Click(object sender, EventArgs e)
+        {
+            UIEdit editForm = new UIEdit();
+            editForm.Show();
+            this.Hide();
         }
     }
 }

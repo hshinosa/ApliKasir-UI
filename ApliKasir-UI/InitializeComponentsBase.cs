@@ -1,32 +1,21 @@
-﻿namespace ApliKasir_UI
-{
-    partial class MenuUtama
-    {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
-        private System.ComponentModel.IContainer components = null;
+﻿using System.ComponentModel;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
+namespace ApliKasir_UI
+{
+    internal class InitializeComponentsBase
+    {
+
+        private void InitializeComponent()
         {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
+            this.components = new System.ComponentModel.Container();
         }
 
-        #region Windows Form Designer generated code
 
         /// <summary>
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        private void InitializeComponent2 () 
         {
             panelBg = new Panel();
             label1 = new Label();
@@ -36,13 +25,7 @@
             buttonTambah = new Button();
             buttonDataBarang = new Button();
             buttonLaporan = new Button();
-            labelLaporan = new Label();
-            labelStokBarang = new Label();
-            labelPemasukan = new Label();
-            labelPengeluaran = new Label();
-            labelHutang = new Label();
             panelBg.SuspendLayout();
-            SuspendLayout();
             // 
             // panelBg
             // 
@@ -91,7 +74,6 @@
             buttonEdit.TabIndex = 4;
             buttonEdit.Text = "Edit Transaksi/Hutang";
             buttonEdit.UseVisualStyleBackColor = false;
-            buttonEdit.Click += buttonEdit_Click;
             // 
             // buttonHapus
             // 
@@ -140,80 +122,10 @@
             buttonLaporan.Text = "Laporan";
             buttonLaporan.UseVisualStyleBackColor = false;
             // 
-            // labelLaporan
-            // 
-            labelLaporan.AutoSize = true;
-            labelLaporan.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            labelLaporan.Location = new Point(433, 9);
-            labelLaporan.Name = "labelLaporan";
-            labelLaporan.Size = new Size(91, 30);
-            labelLaporan.TabIndex = 1;
-            labelLaporan.Text = "Laporan";
-            labelLaporan.TextAlign = ContentAlignment.TopCenter;
-            // 
-            // labelStokBarang
-            // 
-            labelStokBarang.AutoSize = true;
-            labelStokBarang.Location = new Point(233, 96);
-            labelStokBarang.Name = "labelStokBarang";
-            labelStokBarang.Size = new Size(70, 15);
-            labelStokBarang.TabIndex = 2;
-            labelStokBarang.Text = "Stok Barang";
-            // 
-            // labelPemasukan
-            // 
-            labelPemasukan.AutoSize = true;
-            labelPemasukan.Location = new Point(558, 96);
-            labelPemasukan.Name = "labelPemasukan";
-            labelPemasukan.Size = new Size(68, 15);
-            labelPemasukan.TabIndex = 3;
-            labelPemasukan.Text = "Pemasukan";
-            // 
-            // labelPengeluaran
-            // 
-            labelPengeluaran.AutoSize = true;
-            labelPengeluaran.Location = new Point(233, 260);
-            labelPengeluaran.Name = "labelPengeluaran";
-            labelPengeluaran.Size = new Size(73, 15);
-            labelPengeluaran.TabIndex = 4;
-            labelPengeluaran.Text = "Pengeluaran";
-            // 
-            // labelHutang
-            // 
-            labelHutang.AutoSize = true;
-            labelHutang.Location = new Point(558, 260);
-            labelHutang.Name = "labelHutang";
-            labelHutang.Size = new Size(47, 15);
-            labelHutang.TabIndex = 5;
-            labelHutang.Text = "Hutang";
-            // 
-            // MenuUtama
-            // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(labelHutang);
-            Controls.Add(labelPengeluaran);
-            Controls.Add(labelPemasukan);
-            Controls.Add(labelStokBarang);
-            Controls.Add(labelLaporan);
-            Controls.Add(panelBg);
-            Name = "MenuUtama";
-            Text = "ApliKasir";
-            panelBg.ResumeLayout(false);
-            panelBg.PerformLayout();
-            ResumeLayout(false);
-            PerformLayout();
+            // UIDataBarang
+            //
         }
-
-        #endregion
-
         private Panel panelBg;
-        private Label labelLaporan;
-        private Label labelStokBarang;
-        private Label labelPemasukan;
-        private Label labelPengeluaran;
-        private Label labelHutang;
         private Button buttonLaporan;
         private Button buttonDataBarang;
         private Button buttonTambah;
@@ -221,5 +133,6 @@
         private Button button4;
         private Button buttonEdit;
         private Label label1;
+        private Container components;
     }
 }

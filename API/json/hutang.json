@@ -14,9 +14,9 @@
     "totalHarga": 15000.0
   },
   {
-    "idHutang": 100,
-    "namaPelanggan": "asdasd",
-    "namaBarang": "asdasd",
+    "idHutang": 3,
+    "namaPelanggan": "Farras",
+    "namaBarang": "Makanan",
     "jumlahBarang": 10,
     "totalHarga": 10000.0
   }

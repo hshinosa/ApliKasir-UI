@@ -38,6 +38,30 @@ namespace LibraryKasir
             }
         }
 
+        public static async Task<List<DataTransaksi>> GetListTransaksi(string baseUrl)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    HttpResponseMessage response = await client.GetAsync($"{baseUrl}/DataTransaksi");
+                    response.EnsureSuccessStatusCode(); // Throw if not a success code
+
+                    string json = await response.Content.ReadAsStringAsync();
+                    List<DataTransaksi> transaksiList = JsonSerializer.Deserialize<List<DataTransaksi>>(json);
+
+                    return transaksiList;
+                }
+                catch (HttpRequestException ex)
+                {
+                    Console.WriteLine($"Error: {ex.Message}");
+                    return null;
+                }
+            }
+        }
+
+
+
         public static async Task CreateTransaksi(string baseUrl, DataTransaksi transaksi)
         {
             using (HttpClient client = new HttpClient())
@@ -75,6 +99,11 @@ namespace LibraryKasir
                     Console.WriteLine($"Error: {ex.Message}");
                 }
             }
+        }
+
+        public static void CreateHutang(string baseUrl, DataHutang selectedDataHutang)
+        {
+            throw new NotImplementedException();
         }
     }
 }

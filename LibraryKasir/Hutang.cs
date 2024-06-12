@@ -29,6 +29,29 @@ namespace LibraryKasir
             }
         }
 
+        public static async Task<List<DataHutang>> GetListHutang(string baseUrl)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    HttpResponseMessage response = await client.GetAsync($"{baseUrl}/DataHutang");
+                    response.EnsureSuccessStatusCode(); // Throw if not a success code
+
+                    string json = await response.Content.ReadAsStringAsync();
+                    List<DataHutang> hutangList = JsonSerializer.Deserialize<List<DataHutang>>(json);
+
+                    return hutangList;
+                }
+                catch (HttpRequestException ex)
+                {
+                    Console.WriteLine($"Error: {ex.Message}");
+                    return null;
+                }
+            }
+        }
+
+
         public static async Task DeleteHutang(string baseUrl, int idHutang)
         {
             using (HttpClient client = new HttpClient())

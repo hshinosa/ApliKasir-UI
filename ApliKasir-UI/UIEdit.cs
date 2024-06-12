@@ -7,219 +7,119 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using Newtonsoft.Json;
+using LibraryKasir;
 
 namespace ApliKasir_UI
 {
     public partial class UIEdit : Form
     {
-        private string connectionString = ""; // Ganti SERVER_NAME dengan nama server Anda
+        //deklarasi json untuk transaksi dan hutang
+        private static string jsonFilePath = "json\\transaksi.json";
+        private static string jsonFilePath2 = "json\\hutang.json";
+        private string baseUrl = "https://localhost:7222";
+        private List<DataTransaksi> dataTransaksi;
+        private List<DataHutang> dataHutang;
 
-        //Constructor
         public UIEdit()
         {
             InitializeComponent();
+            LoadData();
         }
 
-        // Inisialisasi komponen
-        private void InitializeComponent()
+        //LoadData untuk menampilkan data dari json ke datagrid
+        private async Task LoadData()
         {
-            this.lblProductName = new Label();
-            this.txtProductName = new TextBox();
-            this.lblPrice = new Label();
-            this.txtPrice = new TextBox();
-            this.lblQuantity = new Label();
-            this.txtQuantity = new TextBox();
-            this.btnSave = new Button();
-            this.btnLoad = new Button();
-            this.dgvProducts = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
-            this.SuspendLayout();
+            //Refresh data grid view
+            transaksiTabel.DataSource = null;
+            hutangTabel.DataSource = null;
 
-            // 
-            // lblProductName
-            // 
-            this.lblProductName.AutoSize = true;
-            this.lblProductName.Location = new System.Drawing.Point(12, 15);
-            this.lblProductName.Name = "lblProductName";
-            this.lblProductName.Size = new System.Drawing.Size(87, 15);
-            this.lblProductName.TabIndex = 0;
-            this.lblProductName.Text = "Nama Produk";
+            //Input data barang ke data grid view
+            dataTransaksi = await Hitung.GetListTransaksi(baseUrl);
+            dataHutang = await Hutang.GetListHutang(baseUrl);
 
-            // 
-            // txtProductName
-            // 
-            this.txtProductName.Location = new System.Drawing.Point(105, 12);
-            this.txtProductName.Name = "txtProductName";
-            this.txtProductName.Size = new System.Drawing.Size(167, 23);
-            this.txtProductName.TabIndex = 1;
-
-            // 
-            // lblPrice
-            // 
-            this.lblPrice.AutoSize = true;
-            this.lblPrice.Location = new System.Drawing.Point(12, 44);
-            this.lblPrice.Name = "lblPrice";
-            this.lblPrice.Size = new System.Drawing.Size(39, 15);
-            this.lblPrice.TabIndex = 2;
-            this.lblPrice.Text = "Harga";
-
-            // 
-            // txtPrice
-            // 
-            this.txtPrice.Location = new System.Drawing.Point(105, 41);
-            this.txtPrice.Name = "txtPrice";
-            this.txtPrice.Size = new System.Drawing.Size(167, 23);
-            this.txtPrice.TabIndex = 3;
-
-            // 
-            // lblQuantity
-            // 
-            this.lblQuantity.AutoSize = true;
-            this.lblQuantity.Location = new System.Drawing.Point(12, 73);
-            this.lblQuantity.Name = "lblQuantity";
-            this.lblQuantity.Size = new System.Drawing.Size(51, 15);
-            this.lblQuantity.TabIndex = 4;
-            this.lblQuantity.Text = "Jumlah";
-
-            // 
-            // txtQuantity
-            // 
-            this.txtQuantity.Location = new System.Drawing.Point(105, 70);
-            this.txtQuantity.Name = "txtQuantity";
-            this.txtQuantity.Size = new System.Drawing.Size(167, 23);
-            this.txtQuantity.TabIndex = 5;
-
-            // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(105, 99);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 6;
-            this.btnSave.Text = "Simpan";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new EventHandler(this.btnSave_Click);
-
-            // 
-            // btnLoad
-            // 
-            this.btnLoad.Location = new System.Drawing.Point(197, 99);
-            this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(75, 23);
-            this.btnLoad.TabIndex = 7;
-            this.btnLoad.Text = "Load Data";
-            this.btnLoad.UseVisualStyleBackColor = true;
-            this.btnLoad.Click += new EventHandler(this.btnLoad_Click);
-
-            // 
-            // dgvProducts
-            // 
-            this.dgvProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProducts.Location = new System.Drawing.Point(12, 128);
-            this.dgvProducts.Name = "dgvProducts";
-            this.dgvProducts.RowTemplate.Height = 25;
-            this.dgvProducts.Size = new System.Drawing.Size(260, 150);
-            this.dgvProducts.TabIndex = 8;
-
-            // 
-            // EditProductForm
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 290);
-            this.Controls.Add(this.dgvProducts);
-            this.Controls.Add(this.btnLoad);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.txtQuantity);
-            this.Controls.Add(this.lblQuantity);
-            this.Controls.Add(this.txtPrice);
-            this.Controls.Add(this.lblPrice);
-            this.Controls.Add(this.txtProductName);
-            this.Controls.Add(this.lblProductName);
-            this.Name = "EditProductForm";
-            this.Text = "Edit Produk";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            transaksiTabel.DataSource = dataTransaksi;
+            hutangTabel.DataSource = dataHutang;
         }
 
-        // Event handler untuk tombol Simpan
-        private void btnSave_Click(object sender, EventArgs e)
+        private void buttonEdit_Click(object sender, EventArgs e)
         {
-            string productName = txtProductName.Text;
-            decimal price;
-            int quantity;
 
-            if (string.IsNullOrWhiteSpace(productName))
-            {
-                MessageBox.Show("Nama produk tidak boleh kosong.");
-                return;
-            }
+        }
 
-            if (!decimal.TryParse(txtPrice.Text, out price) || price < 0)
-            {
-                MessageBox.Show("Harga harus berupa angka dan tidak boleh negatif.");
-                return;
-            }
+        private void label2_Click(object sender, EventArgs e)
+        {
 
-            if (!int.TryParse(txtQuantity.Text, out quantity) || quantity < 0)
-            {
-                MessageBox.Show("Jumlah harus berupa angka dan tidak boleh negatif.");
-                return;
-            }
+        }
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+        private void transaksiTabel_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            try
             {
-                string query = "INSERT INTO Produk (Nama, Harga, Jumlah) VALUES (@Nama, @Harga, @Jumlah)";
+                //penggunaan percabangan untuk mengecek apakah ada baris yang dipilih (tabel transksai)
+                if (transaksiTabel.SelectedRows.Count > 0)
                 {
-                    command.Parameters.AddWithValue("@Nama", productName);
-                    command.Parameters.AddWithValue("@Harga", price);
-                    command.Parameters.AddWithValue("@Jumlah", quantity);
-
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                }
-            }
-
-            MessageBox.Show("Produk berhasil disimpan.");
-            ClearFields();
-        }
-
-        // Event handler untuk tombol Load Data
-        private void btnLoad_Click(object sender, EventArgs e)
-        {
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                string query = "SELECT * FROM Produk";
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    connection.Open();
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    foreach (DataGridViewRow row in transaksiTabel.SelectedRows)
                     {
-                        DataTable dt = new DataTable();
-                        dt.Load(reader);
-                        dgvProducts.DataSource = dt;
+                        if (!row.IsNewRow)
+                        {
+                            //untuk mendapatkan nilai dari kolom idTransaksi dari baris yang dipilih
+                            var idx = row.Cells["idTransaksi"].Value;
+
+                            //Validasi input sebelum konversi
+                            if (idx != null && int.TryParse(idx.ToString(), out int id))
+                            {
+                                EditTransaksi editTransaksi = new EditTransaksi();
+                                editTransaksi.Show();
+                            }
+                            else
+                            {
+                                MessageBox.Show("ID Transaksi tidak valid.");
+                            }
+
+                        }
                     }
                 }
+
+                //penggunaan percabangan untuk tabel hutang
+                else if (hutangTabel.SelectedRows.Count > 0)
+                {
+                    foreach (DataGridViewRow row in hutangTabel.SelectedRows)
+                    {
+                        if (!row.IsNewRow)
+                        {
+                            //untuk mendapatkan nilai dari kolom idHutang dari baris yang dipilih
+                            var idx2 = row.Cells["idHutang"].Value;
+
+                            if (idx2 != null && int.TryParse(idx2.ToString(), out int id2))
+                            {
+                                EditHutang editHutang = new EditHutang();
+                                editHutang.Show();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Id Hutang tidak valid.");
+                            }
+
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Silakan pilih baris yang ingin diedit.");
+                }
+            }
+            catch (Exception ex)
+            {
+                //Jika terjadi pengecualian, pesan kesalahan yang sesuai ditampilkan kepada pengguna
+                MessageBox.Show("Terjadi kesalahan saat menghapus data: " + ex.Message);
             }
         }
-
-        private void ClearFields()
-        {
-            txtProductName.Clear();
-            txtPrice.Clear();
-            txtQuantity.Clear();
-        }
-
-        private Label lblProductName;
-        private TextBox txtProductName;
-        private Label lblPrice;
-        private TextBox txtPrice;
-        private Label lblQuantity;
-        private TextBox txtQuantity;
-        private Button btnSave;
-        private Button btnLoad;
-        private DataGridView dgvProducts;
-
     }
 }
