@@ -30,7 +30,7 @@
         {
             panelBg = new Panel();
             label1 = new Label();
-            button4 = new Button();
+            buttonLogout = new Button();
             buttonEdit = new Button();
             buttonHapus = new Button();
             buttonTambah = new Button();
@@ -48,7 +48,7 @@
             // 
             panelBg.BackColor = Color.Crimson;
             panelBg.Controls.Add(label1);
-            panelBg.Controls.Add(button4);
+            panelBg.Controls.Add(buttonLogout);
             panelBg.Controls.Add(buttonEdit);
             panelBg.Controls.Add(buttonHapus);
             panelBg.Controls.Add(buttonTambah);
@@ -65,59 +65,59 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(10, 12);
+            label1.Location = new Point(9, 9);
             label1.Name = "label1";
-            label1.Size = new Size(191, 54);
+            label1.Size = new Size(155, 45);
             label1.TabIndex = 6;
             label1.Text = "ApliKasir";
             // 
-            // button4
+            // buttonLogout
             // 
-            button4.BackColor = Color.White;
-            button4.FlatStyle = FlatStyle.Flat;
-            button4.Location = new Point(55, 549);
-            button4.Margin = new Padding(3, 4, 3, 4);
-            button4.Name = "button4";
-            button4.Size = new Size(86, 35);
-            button4.TabIndex = 5;
-            button4.Text = "Logout";
-            button4.UseVisualStyleBackColor = false;
+            buttonLogout.BackColor = Color.White;
+            buttonLogout.FlatStyle = FlatStyle.Flat;
+            buttonLogout.Location = new Point(48, 412);
+            buttonLogout.Name = "buttonLogout";
+            buttonLogout.Size = new Size(75, 26);
+            buttonLogout.TabIndex = 5;
+            buttonLogout.Text = "Logout";
+            buttonLogout.UseVisualStyleBackColor = false;
+            buttonLogout.Click += buttonLogout_Click;
             // 
             // buttonEdit
             // 
             buttonEdit.BackColor = Color.White;
             buttonEdit.FlatStyle = FlatStyle.Flat;
-            buttonEdit.Location = new Point(3, 351);
-            buttonEdit.Margin = new Padding(3, 4, 3, 4);
+            buttonEdit.Location = new Point(3, 263);
             buttonEdit.Name = "buttonEdit";
-            buttonEdit.Size = new Size(191, 37);
+            buttonEdit.Size = new Size(167, 28);
             buttonEdit.TabIndex = 4;
             buttonEdit.Text = "Edit Transaksi/Hutang";
             buttonEdit.UseVisualStyleBackColor = false;
+            buttonEdit.Click += buttonEdit_Click;
             // 
             // buttonHapus
             // 
             buttonHapus.BackColor = Color.White;
             buttonHapus.FlatStyle = FlatStyle.Flat;
-            buttonHapus.Location = new Point(3, 305);
-            buttonHapus.Margin = new Padding(3, 4, 3, 4);
+            buttonHapus.Location = new Point(3, 229);
             buttonHapus.Name = "buttonHapus";
-            buttonHapus.Size = new Size(191, 37);
+            buttonHapus.Size = new Size(167, 28);
             buttonHapus.TabIndex = 3;
             buttonHapus.Text = "Hapus Transaksi/Hutang";
             buttonHapus.UseVisualStyleBackColor = false;
+            buttonHapus.Click += buttonHapus_Click;
             // 
             // buttonTambah
             // 
             buttonTambah.BackColor = Color.White;
             buttonTambah.FlatStyle = FlatStyle.Flat;
-            buttonTambah.Location = new Point(3, 261);
-            buttonTambah.Margin = new Padding(3, 4, 3, 4);
+            buttonTambah.Location = new Point(3, 196);
             buttonTambah.Name = "buttonTambah";
-            buttonTambah.Size = new Size(191, 36);
+            buttonTambah.Size = new Size(167, 27);
             buttonTambah.TabIndex = 2;
             buttonTambah.Text = "Tambah Transaksi/Hutang";
             buttonTambah.UseVisualStyleBackColor = false;
+            buttonTambah.Click += buttonTambah_Click;
             // 
             // buttonDataBarang
             // 
@@ -226,7 +226,7 @@
         private Button buttonDataBarang;
         private Button buttonTambah;
         private Button buttonHapus;
-        private Button button4;
+        private Button buttonLogout;
         private Button buttonEdit;
         private Label label1;
     }

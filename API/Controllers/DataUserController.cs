@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -12,92 +11,82 @@ namespace API.Controllers
     [Route("[controller]")]
     public class UserController : ControllerBase
     {
-        private static string jsonFilePath = "json\\user.json";
-        private static List<DataUser> users = InitializeDataFromJson(jsonFilePath);
-        private static int nextUserId = users.Count > 0 ? users.Max(u => u.Id) + 1 : 1;
+        // Path file JSON untuk menyimpan data pengguna
+        private static readonly string JsonFilePath = "json\\user.json";
 
-        private static List<DataUser> InitializeDataFromJson(string jsonFilePath)
+        // Inisialisasi data pengguna dari file JSON saat aplikasi dimulai
+        private static Dictionary<string, DataUser> _users = InitializeDataFromJson(JsonFilePath);
+
+        // ID untuk pengguna berikutnya
+        private static int _nextUserId = _users.Count > 0 ? _users.Max(u => u.Value.Id) + 1 : 1;
+
+        // Metode untuk menginisialisasi data pengguna dari file JSON
+        private static Dictionary<string, DataUser> InitializeDataFromJson(string jsonFilePath)
         {
-            List<DataUser> data = new List<DataUser>();
             if (System.IO.File.Exists(jsonFilePath))
             {
                 string jsonData = System.IO.File.ReadAllText(jsonFilePath);
-                data = JsonConvert.DeserializeObject<List<DataUser>>(jsonData);
+                return JsonConvert.DeserializeObject<Dictionary<string, DataUser>>(jsonData);
             }
-            return data;
+            return new Dictionary<string, DataUser>();
         }
 
-        private static void SaveDataToJsonFile(List<DataUser> data)
+        // Metode untuk menyimpan data pengguna ke file JSON
+        private static void SaveDataToJsonFile(Dictionary<string, DataUser> data)
         {
             string jsonData = JsonConvert.SerializeObject(data, Formatting.Indented);
-            System.IO.File.WriteAllText(jsonFilePath, jsonData);
+            System.IO.File.WriteAllText(JsonFilePath, jsonData);
         }
 
+        // Mengembalikan daftar semua pengguna
         [HttpGet]
-        public IEnumerable<DataUser> Get()
+        public ActionResult<IEnumerable<DataUser>> Get()
         {
-            return users;
+            return _users.Values.ToList();
         }
 
+        // Menambahkan pengguna baru
         [HttpPost]
         public IActionResult Post([FromBody] DataUser newUser)
         {
             // Memeriksa apakah username sudah ada
-            if (users.Any(u => u.Username == newUser.Username))
+            if (_users.ContainsKey(newUser.Username))
             {
                 return Conflict();
             }
 
-            // Menambahkan ID baru ke user
-            newUser.Id = nextUserId++;
-
-            users.Add(newUser);
-            SaveDataToJsonFile(users);
-            return Ok(); // Return 200 OK status
+            // Menambahkan ID baru ke pengguna
+            newUser.Id = _nextUserId++;
+            _users.Add(newUser.Username, newUser);
+            SaveDataToJsonFile(_users);
+            return Ok();
         }
 
+        // Proses login pengguna
         [HttpPost("login")]
         public IActionResult Login([FromBody] DataUser loginUser)
         {
-            // Mencari pengguna dengan username yang cocok
-            var user = users.FirstOrDefault(u => u.Username == loginUser.Username);
-
-            // Memeriksa apakah pengguna ditemukan dan password cocok
-            if (user != null && user.Password == loginUser.Password)
+            if (_users.TryGetValue(loginUser.Username, out var user))
             {
-                return Ok(user); // Return 200 OK status with user data
+                // Memeriksa apakah password cocok
+                if (user.Password == loginUser.Password)
+                {
+                    return Ok(user);
+                }
             }
-            else
-            {
-                return NotFound("Username or password is incorrect."); // Return 404 Not Found status with error message
-            }
+            return NotFound("Username atau password salah.");
         }
 
-
-
+        // Mendapatkan informasi pengguna berdasarkan ID
         [HttpGet("{id}")]
         public ActionResult<DataUser> Get(int id)
         {
-            DataUser user = users.FirstOrDefault(u => u.Id == id);
+            DataUser user = _users.Values.FirstOrDefault(u => u.Id == id);
             if (user == null)
             {
                 return NotFound();
             }
             return user;
-        }
-
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
-        {
-            var user = users.FirstOrDefault(u => u.Id == id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            users.Remove(user);
-            SaveDataToJsonFile(users);
-            return NoContent();
         }
     }
 }

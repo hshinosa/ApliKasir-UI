@@ -1,32 +1,37 @@
-[
-  {
+{
+  "Hashfi": {
     "Id": 1,
     "Username": "Hashfi",
-    "Password": "Ganteng"
+    "Password": "109d7775d18b56849e125f555995480fee142c6268e50150ed041fe775131600"
   },
-  {
+  "Majid": {
     "Id": 2,
     "Username": "Majid",
-    "Password": "Ganteng"
+    "Password": "109d7775d18b56849e125f555995480fee142c6268e50150ed041fe775131600"
   },
-  {
+  "Daffa": {
     "Id": 3,
     "Username": "Daffa",
-    "Password": "Ganteng"
+    "Password": "109d7775d18b56849e125f555995480fee142c6268e50150ed041fe775131600"
   },
-  {
+  "Farras": {
     "Id": 4,
     "Username": "Farras",
-    "Password": "Ganteng"
+    "Password": "109d7775d18b56849e125f555995480fee142c6268e50150ed041fe775131600"
   },
-  {
+  "Salma": {
     "Id": 5,
-    "Username": "Arinza",
-    "Password": "Cantik"
-  },
-  {
-    "Id": 6,
     "Username": "Salma",
-    "Password": "Cantik"
+    "Password": "49ba6f7d8a835277839d2a8a41c53bcd911e5bd5fdf2523d160eccd32ff0593f"
+  },
+  "Arinza": {
+    "Id": 6,
+    "Username": "Arinza",
+    "Password": "49ba6f7d8a835277839d2a8a41c53bcd911e5bd5fdf2523d160eccd32ff0593f"
+  },
+  "123": {
+    "Id": 7,
+    "Username": "123",
+    "Password": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"
   }
-]
+}

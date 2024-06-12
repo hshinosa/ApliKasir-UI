@@ -14,8 +14,8 @@ namespace ApliKasir_UI
 {
     public partial class Login : Form
     {
-        private readonly string apiBaseUrl = "https://localhost:7222/user"; // Ubah sesuai dengan URL API Anda
-        private List<DataUser> users;
+        private readonly string _apiBaseUrl = "https://localhost:7222/user"; // Ubah sesuai dengan URL API Anda
+        private Dictionary<string, DataUser> _users;
 
         public Login()
         {
@@ -24,17 +24,23 @@ namespace ApliKasir_UI
             LoadUserData();
         }
 
+        // Metode untuk memuat data pengguna di json dari API ke dalam dictionary
         private async void LoadUserData()
         {
             try
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    HttpResponseMessage response = await client.GetAsync(apiBaseUrl);
+                    HttpResponseMessage response = await client.GetAsync(_apiBaseUrl);
                     if (response.IsSuccessStatusCode)
                     {
                         string jsonData = await response.Content.ReadAsStringAsync();
-                        users = JsonConvert.DeserializeObject<List<DataUser>>(jsonData);
+                        // Mengonversi JSON menjadi list
+                        List<DataUser> userList = JsonConvert.DeserializeObject<List<DataUser>>(jsonData);
+
+                        // Membuat dictionary dari list
+                        _users = userList.ToDictionary(user => user.Username);
+
                     }
                     else
                     {
@@ -48,8 +54,10 @@ namespace ApliKasir_UI
             }
         }
 
+        // Metode untuk menangani klik tombol login
         private async void buttonLogin_Click(object sender, EventArgs e)
         {
+            // Mendapatkan username dan password dari input pengguna
             string username = textBoxUsername.Text;
             string password = textBoxPassword.Text;
 
@@ -60,8 +68,8 @@ namespace ApliKasir_UI
                 return;
             }
 
-            // Membuat objek User baru untuk login
-            DataUser loginUser = new DataUser { Username = username, Password = password };
+            // Membuat objek DataUser baru untuk login
+            DataUser loginUser = new DataUser { Username = username, Password = PasswordHasher.HashPassword(password) };
 
             try
             {
@@ -69,18 +77,18 @@ namespace ApliKasir_UI
                 {
                     string jsonData = JsonConvert.SerializeObject(loginUser);
                     StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-                    HttpResponseMessage response = await client.PostAsync($"{apiBaseUrl}/login", content);
+                    HttpResponseMessage response = await client.PostAsync($"{_apiBaseUrl}/login", content);
 
                     if (response.IsSuccessStatusCode)
                     {
                         MessageBox.Show("Login sukses!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        // Menyembunyikan form login dan menampilkan menu utama
                         this.Hide();
                         using (MenuUtama menuUtama = new MenuUtama())
                         {
                             menuUtama.ShowDialog();
                         }
                         this.Show();
-
                     }
                     else
                     {
@@ -94,9 +102,10 @@ namespace ApliKasir_UI
             }
         }
 
-
+        // Metode untuk menangani klik tombol register
         private async void buttonRegister_Click(object sender, EventArgs e)
         {
+            // Mendapatkan username dan password dari input pengguna
             string username = textBoxUsername.Text;
             string password = textBoxPassword.Text;
 
@@ -107,8 +116,8 @@ namespace ApliKasir_UI
                 return;
             }
 
-            // Membuat objek User baru untuk registrasi
-            DataUser newUser = new DataUser { Username = username, Password = password };
+            // Membuat objek DataUser baru untuk registrasi
+            DataUser newUser = new DataUser { Username = username, Password = PasswordHasher.HashPassword(password) };
 
             try
             {
@@ -116,7 +125,7 @@ namespace ApliKasir_UI
                 {
                     string jsonData = JsonConvert.SerializeObject(newUser);
                     StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-                    HttpResponseMessage response = await client.PostAsync(apiBaseUrl, content);
+                    HttpResponseMessage response = await client.PostAsync(_apiBaseUrl, content);
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -124,7 +133,7 @@ namespace ApliKasir_UI
                     }
                     else if (response.StatusCode == HttpStatusCode.Conflict)
                     {
-                        MessageBox.Show("Username sudah ada. tolong buat username yang lain.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Username sudah ada. Tolong buat username yang lain.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
@@ -147,7 +156,6 @@ namespace ApliKasir_UI
                     form.Close();
                 }
             }
-
             // Menutup form utama (jika diperlukan)
             this.Close();
         }
