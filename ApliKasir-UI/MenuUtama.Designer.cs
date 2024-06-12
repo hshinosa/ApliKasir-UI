@@ -130,6 +130,67 @@
             // 
             panelBg.TabIndex = 0;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(13, 15);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(231, 65);
+            label1.TabIndex = 6;
+            label1.Text = "ApliKasir";
+            // 
+            // button4
+            // 
+            button4.BackColor = Color.White;
+            button4.FlatStyle = FlatStyle.Flat;
+            button4.Location = new Point(69, 687);
+            button4.Margin = new Padding(4, 5, 4, 5);
+            button4.Name = "button4";
+            button4.Size = new Size(107, 43);
+            button4.TabIndex = 5;
+            button4.Text = "Logout";
+            button4.UseVisualStyleBackColor = false;
+            // 
+            // buttonEdit
+            // 
+            buttonEdit.BackColor = Color.White;
+            buttonEdit.FlatStyle = FlatStyle.Flat;
+            buttonEdit.Location = new Point(4, 438);
+            buttonEdit.Margin = new Padding(4, 5, 4, 5);
+            buttonEdit.Name = "buttonEdit";
+            buttonEdit.Size = new Size(239, 47);
+            buttonEdit.TabIndex = 4;
+            buttonEdit.Text = "Edit Transaksi/Hutang";
+            buttonEdit.UseVisualStyleBackColor = false;
+            // 
+            // buttonHapus
+            // 
+            buttonHapus.BackColor = Color.White;
+            buttonHapus.FlatStyle = FlatStyle.Flat;
+            buttonHapus.Location = new Point(4, 382);
+            buttonHapus.Margin = new Padding(4, 5, 4, 5);
+            buttonHapus.Name = "buttonHapus";
+            buttonHapus.Size = new Size(239, 47);
+            buttonHapus.TabIndex = 3;
+            buttonHapus.Text = "Hapus Transaksi/Hutang";
+            buttonHapus.UseVisualStyleBackColor = false;
+            buttonHapus.Click += buttonHapus_Click;
+            // 
+            // buttonTambah
+            // 
+            buttonTambah.BackColor = Color.White;
+            buttonTambah.FlatStyle = FlatStyle.Flat;
+            buttonTambah.Location = new Point(4, 327);
+            buttonTambah.Margin = new Padding(4, 5, 4, 5);
+            buttonTambah.Name = "buttonTambah";
+            buttonTambah.Size = new Size(239, 45);
+            buttonTambah.TabIndex = 2;
+            buttonTambah.Text = "Tambah Transaksi/Hutang";
+            buttonTambah.UseVisualStyleBackColor = false;
+            // 
             // buttonDataBarang
             // 
             buttonDataBarang.BackColor = Color.White;

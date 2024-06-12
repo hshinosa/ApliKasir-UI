@@ -24,9 +24,33 @@
     "jumlahBarang": 12
   },
   {
-    "idBarang": 5,
-    "namaBarang": "Mainan Baru",
-    "hargaBarang": 2000.0,
-    "jumlahBarang": 70
+    "idBarang": 10,
+    "namaBarang": "mouse",
+    "hargaBarang": 20000.0,
+    "jumlahBarang": 120
+  },
+  {
+    "idBarang": 4,
+    "namaBarang": "giu",
+    "hargaBarang": 6000.0,
+    "jumlahBarang": 90
+  },
+  {
+    "idBarang": 8,
+    "namaBarang": "op",
+    "hargaBarang": 4000.0,
+    "jumlahBarang": 9
+  },
+  {
+    "idBarang": 23,
+    "namaBarang": "tuwak",
+    "hargaBarang": 100000.0,
+    "jumlahBarang": 12
+  },
+  {
+    "idBarang": 21,
+    "namaBarang": "vodka",
+    "hargaBarang": 100000.0,
+    "jumlahBarang": 12
   }
 ]

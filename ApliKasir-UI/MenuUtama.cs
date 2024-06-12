@@ -91,5 +91,12 @@ namespace ApliKasir_UI
             dataTambahForm.Show();
             this.Hide();
         }
+
+        private void buttonHapus_Click(object sender, EventArgs e)
+        {
+            UIHapus hapusForm = new UIHapus();
+            hapusForm.Show();
+            this.Hide();
+        }
     }
 }

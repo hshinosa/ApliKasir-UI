@@ -1,10 +1,10 @@
 [
   {
-    "idHutang": 1,
-    "namaPelanggan": "Majid",
-    "namaBarang": "Minuman",
-    "jumlahBarang": 10,
-    "totalHarga": 250000.0
+    "idHutang": 21,
+    "namaPelanggan": "deavan",
+    "namaBarang": "vodka",
+    "jumlahBarang": 20,
+    "totalHarga": 4000.0
   },
   {
     "idHutang": 2,
