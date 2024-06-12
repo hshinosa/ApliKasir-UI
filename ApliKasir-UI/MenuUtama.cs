@@ -6,7 +6,6 @@ namespace ApliKasir_UI
 {
     public partial class MenuUtama : Form
     {
-        private static readonly string jsonFilePath = "json\\barang.json";
         private readonly string baseUrl = "https://localhost:7222";
         private List<DataBarang> databarang;
         private List<DataTransaksi> datatransaksi;
@@ -32,14 +31,8 @@ namespace ApliKasir_UI
             Show();
         }
 
-        private void buttonDataBarang_Click(object sender, EventArgs e)
-        {
-            using (UIDataBarang dataBarangForm = new UIDataBarang())
-            {
-                dataBarangForm.ShowDialog();
-            }
-        }
-        // mengambil data dari Json
+        
+        // Mengambil data dari Json
         private async Task LoadData()
         {
             //Implementasi design by contract 
@@ -49,6 +42,7 @@ namespace ApliKasir_UI
                 dataGridBarang.DataSource = null;
                 dataGridTransaksi.DataSource = null;
                 dataGridHutang.DataSource = null;
+
                 //Input data barang to data grid view
                 databarang = await Barang.GetListBarang(baseUrl);
                 datatransaksi = await Hitung.GetListTransaksi(baseUrl);
@@ -63,47 +57,14 @@ namespace ApliKasir_UI
                 Console.WriteLine($"Error loading data: {ex.Message}");
             }
         }
-        private void buttonTambah_Click(object sender, EventArgs e)
-        {
-            using (UITambah tambahForm = new UITambah())
-            {
-                tambahForm.ShowDialog();
-            }
-        }
-        private void buttonHapus_Click(object sender, EventArgs e)
-        {
-            using (UIHapus hapusForm = new UIHapus())
-            {
-                hapusForm.ShowDialog();
-            }
-        }
-        private void buttonEdit_Click(object sender, EventArgs e)
-        {
-            using (UIEdit editForm = new UIEdit())
-            {
-                editForm.ShowDialog();
-            }
-        }
 
-        private void buttonTambah_Click(object sender, EventArgs e)
-        {
-            UITambah dataTambahForm = new UITambah();
-            dataTambahForm.Show();
-            this.Hide();
-        }
+        // Event handler untuk berpindah menu
+        private void buttonDataBarang_Click(object sender, EventArgs e) => ShowForm<UIDataBarang>();
 
-        private void buttonHapus_Click(object sender, EventArgs e)
-        {
-            UIHapus hapusForm = new UIHapus();
-            hapusForm.Show();
-            this.Hide();
-        }
+        private void buttonTambah_Click(object sender, EventArgs e) => ShowForm<UITambah>();
 
-        private void buttonEdit_Click(object sender, EventArgs e)
-        {
-            UIEdit editForm = new UIEdit();
-            editForm.Show();
-            this.Hide();
-        }
+        private void buttonHapus_Click(object sender, EventArgs e) => ShowForm<UIHapus>();
+
+        private void buttonEdit_Click(object sender, EventArgs e) => ShowForm<UIEdit>();
     }
 }

@@ -99,9 +99,24 @@ namespace LibraryKasir
             }
         }
 
-        public static void CreateHutang(string baseUrl, DataHutang selectedDataHutang)
+        public static async Task UpdateTransaksi(string baseUrl, int idTransaksi, DataTransaksi updatedTransaksi)
         {
-            throw new NotImplementedException();
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    string json = JsonSerializer.Serialize(updatedTransaksi);
+                    HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                    HttpResponseMessage response = await client.PutAsync($"{baseUrl}/DataTransaksi/{idTransaksi}", content);
+                    response.EnsureSuccessStatusCode(); // Ensures throwing an exception if the HTTP response status indicates failure
+
+                    Console.WriteLine($"Transaksi with ID {idTransaksi} has been successfully updated.");
+                }
+                catch (HttpRequestException ex)
+                {
+                    Console.WriteLine($"Error updating Transaksi: {ex.Message}");
+                }
+            }
         }
     }
 }

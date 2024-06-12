@@ -70,6 +70,22 @@ namespace API.Controllers
             SaveDataToJsonFile(dataHutang);
             return NoContent();
         }
+
+        [HttpPut("{idHutang}")]
+        public IActionResult Put(int idHutang, [FromBody] DataHutang updatedValue)
+        {
+            var item = dataHutang.FirstOrDefault(b => b.idHutang == idHutang);
+
+            if (item == null)
+            {
+                return NotFound(); // Return 404 Not Found status if ID is not found
+            }
+
+            int index = dataHutang.IndexOf(item);
+            dataHutang[index] = updatedValue;
+            SaveDataToJsonFile(dataHutang);
+            return NoContent();
+        }
     }
-    }
+}
 

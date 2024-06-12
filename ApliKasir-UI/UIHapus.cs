@@ -15,9 +15,6 @@ namespace ApliKasir_UI
 {
     public partial class UIHapus : Form
     {
-        //deklarasi json untuk transaksi dan hutang
-        private static string jsonFilePath = "json\\transaksi.json";
-        private static string jsonFilePath2 = "json\\hutang.json";
         private string baseUrl = "https://localhost:7222";
         private List<DataTransaksi> datatransaksi;
         private List<DataHutang> dataHutang;
@@ -63,11 +60,6 @@ namespace ApliKasir_UI
         }
 
         private void label2_Click_2(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonEdit_Click(object sender, EventArgs e)
         {
 
         }
@@ -141,6 +133,31 @@ namespace ApliKasir_UI
                 MessageBox.Show("Terjadi kesalahan saat menghapus data: " + ex.Message);
             }
         }
+
+        private void buttonLogout_Click(object sender, EventArgs e)
+        {
+            Close(); // Menutup form MenuUtama
+            Application.Restart(); // Me-restart aplikasi untuk kembali ke form Login
+        }
+
+        private void ShowForm<T>() where T : Form, new()
+        {
+            Hide();
+            using (T form = new T())
+            {
+                form.ShowDialog();
+            }
+            Show();
+        }
+
+        private void buttonDataBarang_Click(object sender, EventArgs e) => ShowForm<UIDataBarang>();
+
+        private void buttonTambah_Click(object sender, EventArgs e) => ShowForm<UITambah>();
+
+        private void buttonEdit_Click(object sender, EventArgs e) => ShowForm<UIEdit>();
+
+        private void buttonLaporan_Click(object sender, EventArgs e) => ShowForm<MenuUtama>();
+
 
     }
 }

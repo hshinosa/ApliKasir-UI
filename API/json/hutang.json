@@ -1,28 +1,14 @@
 [
   {
-    "idHutang": 21,
-    "namaPelanggan": "deavan",
-    "namaBarang": "vodka",
-    "jumlahBarang": 20,
-    "totalHarga": 4000.0
-  },
-  {
-    "idHutang": 2,
-    "namaPelanggan": "Majid",
-    "namaBarang": "Makanan",
-    "jumlahBarang": 1,
-    "totalHarga": 15000.0
-  },
-  {
-    "idHutang": 3,
+    "idHutang": 1,
     "namaPelanggan": "Salma",
-    "namaBarang": "Minuman",
+    "namaBarang": "Apel",
     "jumlahBarang": 10000,
     "totalHarga": 10000.0
   },
   {
-    "idHutang": 4,
-    "namaPelanggan": "Salma",
+    "idHutang": 2,
+    "namaPelanggan": "Farras",
     "namaBarang": "Makanan",
     "jumlahBarang": 30000,
     "totalHarga": 30000.0

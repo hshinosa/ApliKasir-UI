@@ -43,10 +43,17 @@ namespace ApliKasir_UI
             hutangTabel.DataSource = dataHutang;
         }
 
-        private void buttonEdit_Click(object sender, EventArgs e)
+        private void ShowForm<T>() where T : Form, new()
         {
-
+            Hide();
+            using (T form = new T())
+            {
+                form.ShowDialog();
+            }
+            Show();
         }
+
+        
 
         private void label2_Click(object sender, EventArgs e)
         {
@@ -58,69 +65,57 @@ namespace ApliKasir_UI
 
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void buttonEditTransaksi_Click(object sender, EventArgs e)
         {
-            try
-            {
                 //penggunaan percabangan untuk mengecek apakah ada baris yang dipilih (tabel transksai)
                 if (transaksiTabel.SelectedRows.Count > 0)
                 {
-                    foreach (DataGridViewRow row in transaksiTabel.SelectedRows)
+                    DataGridViewRow selectedRowTransaksi = transaksiTabel.SelectedRows[0];
+                    if (selectedRowTransaksi.DataBoundItem is DataTransaksi selectedDataTransaksi)
                     {
-                        if (!row.IsNewRow)
+                        int idTransaksi = selectedDataTransaksi.idTransaksi;
+                        this.Hide();
+                        using (EditTransaksi editTransaksi = new EditTransaksi(idTransaksi))
                         {
-                            //untuk mendapatkan nilai dari kolom idTransaksi dari baris yang dipilih
-                            var idx = row.Cells["idTransaksi"].Value;
-
-                            //Validasi input sebelum konversi
-                            if (idx != null && int.TryParse(idx.ToString(), out int id))
-                            {
-                                EditTransaksi editTransaksi = new EditTransaksi();
-                                editTransaksi.Show();
-                            }
-                            else
-                            {
-                                MessageBox.Show("ID Transaksi tidak valid.");
-                            }
-
+                            editTransaksi.ShowDialog();
                         }
+                        this.Show();
                     }
                 }
-
-
                 //penggunaan percabangan untuk tabel hutang
                 else if (hutangTabel.SelectedRows.Count > 0)
                 {
-                    foreach (DataGridViewRow row in hutangTabel.SelectedRows)
+                    DataGridViewRow selectedRowHutang = hutangTabel.SelectedRows[0];
+                    if (selectedRowHutang.DataBoundItem is DataHutang selectedDataBarang)
                     {
-                        if (!row.IsNewRow)
+                        int idHutang = selectedDataBarang.idHutang;
+                        this.Hide();
+                        using (EditHutang EditHutang = new EditHutang(idHutang))
                         {
-                            //untuk mendapatkan nilai dari kolom idHutang dari baris yang dipilih
-                            var idx2 = row.Cells["idHutang"].Value;
-
-                            if (idx2 != null && int.TryParse(idx2.ToString(), out int id2))
-                            {
-                                EditHutang editHutang = new EditHutang();
-                                editHutang.Show();
-                            }
-                            else
-                            {
-                                MessageBox.Show("Id Hutang tidak valid.");
-                            }
-
+                            EditHutang.ShowDialog();
                         }
+                        this.Show();
                     }
                 }
                 else
                 {
                     MessageBox.Show("Silakan pilih baris yang ingin diedit.");
                 }
-            }
-            catch (Exception ex)
-            {
-                //Jika terjadi pengecualian, pesan kesalahan yang sesuai ditampilkan kepada pengguna
-                MessageBox.Show("Terjadi kesalahan saat menghapus data: " + ex.Message);
-            }
+        }
+
+        private void buttonLaporan_Click(object sender, EventArgs e) => ShowForm<MenuUtama>();
+
+        private void buttonDataBarang_Click(object sender, EventArgs e) => ShowForm<UIDataBarang>();
+
+        private void buttonTambah_Click(object sender, EventArgs e) => ShowForm<UITambah>();
+
+        private void buttonHapus_Click(object sender, EventArgs e) => ShowForm<UIHapus>();
+        private void buttonEdit_Click(object sender, EventArgs e) => ShowForm<UIEdit>();
+
+        private void buttonLogout_Click(object sender, EventArgs e)
+        {
+            Close(); // Menutup form MenuUtama
+            Application.Restart(); // Me-restart aplikasi untuk kembali ke form Login
         }
     }
 }

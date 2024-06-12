@@ -44,8 +44,7 @@
             dataGridBarang = new DataGridView();
             dataGridTransaksi = new DataGridView();
             dataGridHutang = new DataGridView();
-            button4 = new Button();
-            label1 = new Label();
+            label2 = new Label();
             panelBg.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridBarang).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridTransaksi).BeginInit();
@@ -65,15 +64,18 @@
             panelBg.Location = new Point(0, 0);
             panelBg.Margin = new Padding(3, 4, 3, 4);
             panelBg.Name = "panelBg";
-            panelBg.Size = new Size(198, 601);
+            panelBg.Size = new Size(220, 661);
+            panelBg.TabIndex = 0;
+            // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(3, 44);
+            label1.Location = new Point(37, 9);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(231, 65);
+            label1.Size = new Size(155, 45);
             label1.TabIndex = 6;
             label1.Text = "ApliKasir";
             // 
@@ -81,9 +83,9 @@
             // 
             buttonLogout.BackColor = Color.White;
             buttonLogout.FlatStyle = FlatStyle.Flat;
-            buttonLogout.Location = new Point(48, 412);
+            buttonLogout.Location = new Point(64, 590);
             buttonLogout.Name = "buttonLogout";
-            buttonLogout.Size = new Size(75, 26);
+            buttonLogout.Size = new Size(94, 46);
             buttonLogout.TabIndex = 5;
             buttonLogout.Text = "Logout";
             buttonLogout.UseVisualStyleBackColor = false;
@@ -93,10 +95,10 @@
             // 
             buttonEdit.BackColor = Color.White;
             buttonEdit.FlatStyle = FlatStyle.Flat;
-            buttonEdit.Location = new Point(21, 383);
-            buttonEdit.Margin = new Padding(3, 4, 3, 4);
+            buttonEdit.Location = new Point(21, 376);
+            buttonEdit.Margin = new Padding(4, 5, 4, 5);
             buttonEdit.Name = "buttonEdit";
-            buttonEdit.Size = new Size(191, 40);
+            buttonEdit.Size = new Size(191, 38);
             buttonEdit.TabIndex = 4;
             buttonEdit.Text = "Edit Transaksi/Hutang";
             buttonEdit.UseVisualStyleBackColor = false;
@@ -106,10 +108,10 @@
             // 
             buttonHapus.BackColor = Color.White;
             buttonHapus.FlatStyle = FlatStyle.Flat;
-            buttonHapus.Location = new Point(21, 335);
-            buttonHapus.Margin = new Padding(3, 4, 3, 4);
+            buttonHapus.Location = new Point(21, 333);
+            buttonHapus.Margin = new Padding(4, 5, 4, 5);
             buttonHapus.Name = "buttonHapus";
-            buttonHapus.Size = new Size(191, 40);
+            buttonHapus.Size = new Size(191, 33);
             buttonHapus.TabIndex = 3;
             buttonHapus.Text = "Hapus Transaksi/Hutang";
             buttonHapus.UseVisualStyleBackColor = false;
@@ -119,77 +121,14 @@
             // 
             buttonTambah.BackColor = Color.White;
             buttonTambah.FlatStyle = FlatStyle.Flat;
-            buttonTambah.Location = new Point(21, 287);
-            buttonTambah.Margin = new Padding(3, 4, 3, 4);
+            buttonTambah.Location = new Point(21, 289);
+            buttonTambah.Margin = new Padding(4, 5, 4, 5);
             buttonTambah.Name = "buttonTambah";
-            buttonTambah.Size = new Size(191, 40);
+            buttonTambah.Size = new Size(191, 34);
             buttonTambah.TabIndex = 2;
             buttonTambah.Text = "Tambah Transaksi/Hutang";
             buttonTambah.UseVisualStyleBackColor = false;
             buttonTambah.Click += buttonTambah_Click;
-            // 
-            panelBg.TabIndex = 0;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(13, 15);
-            label1.Margin = new Padding(4, 0, 4, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(231, 65);
-            label1.TabIndex = 6;
-            label1.Text = "ApliKasir";
-            // 
-            // button4
-            // 
-            button4.BackColor = Color.White;
-            button4.FlatStyle = FlatStyle.Flat;
-            button4.Location = new Point(69, 687);
-            button4.Margin = new Padding(4, 5, 4, 5);
-            button4.Name = "button4";
-            button4.Size = new Size(107, 43);
-            button4.TabIndex = 5;
-            button4.Text = "Logout";
-            button4.UseVisualStyleBackColor = false;
-            // 
-            // buttonEdit
-            // 
-            buttonEdit.BackColor = Color.White;
-            buttonEdit.FlatStyle = FlatStyle.Flat;
-            buttonEdit.Location = new Point(4, 438);
-            buttonEdit.Margin = new Padding(4, 5, 4, 5);
-            buttonEdit.Name = "buttonEdit";
-            buttonEdit.Size = new Size(239, 47);
-            buttonEdit.TabIndex = 4;
-            buttonEdit.Text = "Edit Transaksi/Hutang";
-            buttonEdit.UseVisualStyleBackColor = false;
-            // 
-            // buttonHapus
-            // 
-            buttonHapus.BackColor = Color.White;
-            buttonHapus.FlatStyle = FlatStyle.Flat;
-            buttonHapus.Location = new Point(4, 382);
-            buttonHapus.Margin = new Padding(4, 5, 4, 5);
-            buttonHapus.Name = "buttonHapus";
-            buttonHapus.Size = new Size(239, 47);
-            buttonHapus.TabIndex = 3;
-            buttonHapus.Text = "Hapus Transaksi/Hutang";
-            buttonHapus.UseVisualStyleBackColor = false;
-            buttonHapus.Click += buttonHapus_Click;
-            // 
-            // buttonTambah
-            // 
-            buttonTambah.BackColor = Color.White;
-            buttonTambah.FlatStyle = FlatStyle.Flat;
-            buttonTambah.Location = new Point(4, 327);
-            buttonTambah.Margin = new Padding(4, 5, 4, 5);
-            buttonTambah.Name = "buttonTambah";
-            buttonTambah.Size = new Size(239, 45);
-            buttonTambah.TabIndex = 2;
-            buttonTambah.Text = "Tambah Transaksi/Hutang";
-            buttonTambah.UseVisualStyleBackColor = false;
             // 
             // buttonDataBarang
             // 
@@ -227,7 +166,7 @@
             labelLaporan.ForeColor = SystemColors.Window;
             labelLaporan.Location = new Point(581, 44);
             labelLaporan.Name = "labelLaporan";
-            labelLaporan.Size = new Size(139, 45);
+            labelLaporan.Size = new Size(91, 30);
             labelLaporan.TabIndex = 1;
             labelLaporan.Text = "Laporan";
             labelLaporan.TextAlign = ContentAlignment.TopCenter;
@@ -240,7 +179,7 @@
             labelStokBarang.ForeColor = SystemColors.Window;
             labelStokBarang.Location = new Point(301, 129);
             labelStokBarang.Name = "labelStokBarang";
-            labelStokBarang.Size = new Size(137, 33);
+            labelStokBarang.Size = new Size(95, 23);
             labelStokBarang.TabIndex = 2;
             labelStokBarang.Text = "Stok Barang";
             // 
@@ -252,7 +191,7 @@
             labelPemasukan.ForeColor = SystemColors.Window;
             labelPemasukan.Location = new Point(598, 129);
             labelPemasukan.Name = "labelPemasukan";
-            labelPemasukan.Size = new Size(110, 33);
+            labelPemasukan.Size = new Size(78, 23);
             labelPemasukan.TabIndex = 3;
             labelPemasukan.Text = "Transaksi";
             // 
@@ -264,8 +203,9 @@
             labelHutang.ForeColor = SystemColors.Window;
             labelHutang.Location = new Point(905, 129);
             labelHutang.Name = "labelHutang";
-            labelHutang.Size = new Size(88, 33);
+            labelHutang.Size = new Size(0, 23);
             labelHutang.TabIndex = 5;
+            // 
             // dataGridBarang
             // 
             dataGridBarang.BackgroundColor = SystemColors.GradientInactiveCaption;
@@ -300,36 +240,26 @@
             dataGridHutang.Size = new Size(271, 357);
             dataGridHutang.TabIndex = 9;
             // 
+            // label2
             // 
-            // button4
-            // 
-            button4.BackColor = Color.White;
-            button4.FlatStyle = FlatStyle.Flat;
-            button4.Location = new Point(48, 412);
-            button4.Name = "button4";
-            button4.Size = new Size(75, 26);
-            button4.TabIndex = 5;
-            button4.Text = "Logout";
-            button4.UseVisualStyleBackColor = false;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(9, 9);
-            label1.Name = "label1";
-            label1.Size = new Size(155, 45);
-            label1.TabIndex = 6;
-            label1.Text = "ApliKasir";
+            label2.AutoSize = true;
+            label2.BackColor = Color.Black;
+            label2.Font = new Font("Arial Narrow", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.ForeColor = SystemColors.Window;
+            label2.Location = new Point(936, 129);
+            label2.Name = "label2";
+            label2.Size = new Size(60, 23);
+            label2.TabIndex = 10;
+            label2.Text = "Hutang";
             // 
             // MenuUtama
             // 
-            AutoScaleDimensions = new SizeF(8F, 22F);
+            AutoScaleDimensions = new SizeF(6F, 16F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Khaki;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(1107, 660);
+            ClientSize = new Size(1140, 661);
+            Controls.Add(label2);
             Controls.Add(dataGridHutang);
             Controls.Add(dataGridTransaksi);
             Controls.Add(dataGridBarang);
@@ -369,5 +299,6 @@
         private DataGridView dataGridBarang;
         private DataGridView dataGridTransaksi;
         private DataGridView dataGridHutang;
+        private Label label2;
     }
 }

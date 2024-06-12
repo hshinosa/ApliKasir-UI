@@ -29,16 +29,12 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            label2 = new Label();
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
-            label6 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            textBox5 = new TextBox();
+            inputNamaPelanggan = new TextBox();
+            inputNamaBarang = new TextBox();
+            inputJumlahBarang = new TextBox();
             UpdateBtn = new Button();
             SuspendLayout();
             // 
@@ -52,19 +48,10 @@
             label1.TabIndex = 0;
             label1.Text = "Edit Hutang";
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(47, 56);
-            label2.Name = "label2";
-            label2.Size = new Size(60, 15);
-            label2.TabIndex = 1;
-            label2.Text = "Id Hutang";
-            // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(47, 91);
+            label3.Location = new Point(64, 65);
             label3.Name = "label3";
             label3.Size = new Size(98, 15);
             label3.TabIndex = 2;
@@ -73,7 +60,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(47, 127);
+            label4.Location = new Point(64, 101);
             label4.Name = "label4";
             label4.Size = new Size(79, 15);
             label4.TabIndex = 3;
@@ -82,61 +69,38 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(47, 163);
+            label5.Location = new Point(64, 137);
             label5.Name = "label5";
             label5.Size = new Size(85, 15);
             label5.TabIndex = 4;
             label5.Text = "Jumlah Barang";
             // 
-            // label6
+            // inputNamaPelanggan
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(47, 197);
-            label6.Name = "label6";
-            label6.Size = new Size(67, 15);
-            label6.TabIndex = 5;
-            label6.Text = "Total Harga";
+            inputNamaPelanggan.Location = new Point(171, 62);
+            inputNamaPelanggan.Name = "inputNamaPelanggan";
+            inputNamaPelanggan.Size = new Size(147, 23);
+            inputNamaPelanggan.TabIndex = 7;
             // 
-            // textBox1
+            // inputNamaBarang
             // 
-            textBox1.Location = new Point(154, 53);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(75, 23);
-            textBox1.TabIndex = 6;
+            inputNamaBarang.Location = new Point(171, 101);
+            inputNamaBarang.Name = "inputNamaBarang";
+            inputNamaBarang.Size = new Size(147, 23);
+            inputNamaBarang.TabIndex = 8;
             // 
-            // textBox2
+            // inputJumlahBarang
             // 
-            textBox2.Location = new Point(154, 88);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(147, 23);
-            textBox2.TabIndex = 7;
-            // 
-            // textBox3
-            // 
-            textBox3.Location = new Point(154, 127);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(147, 23);
-            textBox3.TabIndex = 8;
-            // 
-            // textBox4
-            // 
-            textBox4.Location = new Point(154, 163);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(75, 23);
-            textBox4.TabIndex = 9;
-            // 
-            // textBox5
-            // 
-            textBox5.Location = new Point(154, 197);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(110, 23);
-            textBox5.TabIndex = 10;
+            inputJumlahBarang.Location = new Point(171, 137);
+            inputJumlahBarang.Name = "inputJumlahBarang";
+            inputJumlahBarang.Size = new Size(147, 23);
+            inputJumlahBarang.TabIndex = 9;
             // 
             // UpdateBtn
             // 
-            UpdateBtn.Location = new Point(171, 237);
+            UpdateBtn.Location = new Point(154, 179);
             UpdateBtn.Name = "UpdateBtn";
-            UpdateBtn.Size = new Size(75, 23);
+            UpdateBtn.Size = new Size(92, 23);
             UpdateBtn.TabIndex = 11;
             UpdateBtn.Text = "Update";
             UpdateBtn.UseVisualStyleBackColor = true;
@@ -146,18 +110,14 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(426, 272);
+            ClientSize = new Size(404, 239);
             Controls.Add(UpdateBtn);
-            Controls.Add(textBox5);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
-            Controls.Add(label6);
+            Controls.Add(inputJumlahBarang);
+            Controls.Add(inputNamaBarang);
+            Controls.Add(inputNamaPelanggan);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
-            Controls.Add(label2);
             Controls.Add(label1);
             Name = "EditHutang";
             Text = "EditHutang";
@@ -168,16 +128,12 @@
         #endregion
 
         private Label label1;
-        private Label label2;
         private Label label3;
         private Label label4;
         private Label label5;
-        private Label label6;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private TextBox textBox5;
+        private TextBox inputNamaPelanggan;
+        private TextBox inputNamaBarang;
+        private TextBox inputJumlahBarang;
         private Button UpdateBtn;
     }
 }

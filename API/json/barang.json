@@ -7,50 +7,8 @@
   },
   {
     "idBarang": 2,
-    "namaBarang": "02",
-    "hargaBarang": 2.0,
-    "jumlahBarang": 1000
-  },
-  {
-    "idBarang": 3,
-    "namaBarang": "apel",
+    "namaBarang": "Apel",
     "hargaBarang": 2000.0,
     "jumlahBarang": 70
-  },
-  {
-    "idBarang": 4,
-    "namaBarang": "milkita",
-    "hargaBarang": 2000.0,
-    "jumlahBarang": 12
-  },
-  {
-    "idBarang": 10,
-    "namaBarang": "mouse",
-    "hargaBarang": 20000.0,
-    "jumlahBarang": 120
-  },
-  {
-    "idBarang": 4,
-    "namaBarang": "giu",
-    "hargaBarang": 6000.0,
-    "jumlahBarang": 90
-  },
-  {
-    "idBarang": 8,
-    "namaBarang": "op",
-    "hargaBarang": 4000.0,
-    "jumlahBarang": 9
-  },
-  {
-    "idBarang": 23,
-    "namaBarang": "tuwak",
-    "hargaBarang": 100000.0,
-    "jumlahBarang": 12
-  },
-  {
-    "idBarang": 21,
-    "namaBarang": "vodka",
-    "hargaBarang": 100000.0,
-    "jumlahBarang": 12
   }
 ]

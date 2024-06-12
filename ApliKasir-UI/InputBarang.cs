@@ -16,13 +16,20 @@ namespace ApliKasir_UI
         // Event handler untuk klik tombol input
         private async void ButtonInput_Click(object sender, EventArgs e)
         {
-            // Membuat objek DataBarang baru dengan data yang telah disanitasi dan di-parse
+            // Validasi nama barang
+            if (!ValidateName(textBoxNama.Text, out string validatedName))
+            {
+                MessageBox.Show("Nama barang hanya boleh mengandung huruf dan spasi.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Membuat objek DataBarang baru dengan data yang telah di-parse
             var newBarang = new DataBarang
             {
                 idBarang = await GenerateNewId(),
-                namaBarang = SanitizeName(textBoxNama.Text),
-                hargaBarang = ParseHarga(textBoxHarga.Text),
-                jumlahBarang = ParseJumlah(textBoxJumlah.Text)
+                namaBarang = validatedName,
+                hargaBarang = SanitizedHarga(textBoxHarga.Text),
+                jumlahBarang = SanitizedJumlah(textBoxJumlah.Text)
             };
 
             // Mengirim data barang baru ke server
@@ -37,21 +44,27 @@ namespace ApliKasir_UI
             return (dataBarangList.LastOrDefault()?.idBarang ?? 0) + 1;
         }
 
-        // Metode untuk mensanitasi nama barang agar hanya mengandung huruf dan spasi
-        private string SanitizeName(string input)
+        // Metode untuk memvalidasi nama barang agar hanya mengandung huruf dan spasi
+        private bool ValidateName(string input, out string validatedName)
         {
-            return Regex.Replace(input.Trim(), "[^a-zA-Z\\s]", "");
+            validatedName = input.Trim();
+            if (Regex.IsMatch(validatedName, "^[a-zA-Z\\s]+$"))
+            {
+                return true;
+            }
+            validatedName = string.Empty;
+            return false;
         }
 
         // Metode untuk mensanitasi harga barang dari string ke double
-        private double ParseHarga(string input)
+        private double SanitizedHarga(string input)
         {
             string sanitizedInput = Regex.Replace(input.Trim(), "[^0-9.]", "");
             return double.TryParse(sanitizedInput, out double result) ? result : 0.0;
         }
 
         // Metode untuk mensanitasi jumlah barang dari string ke integer
-        private int ParseJumlah(string input)
+        private int SanitizedJumlah(string input)
         {
             string sanitizedInput = Regex.Replace(input.Trim(), "[^0-9]", "");
             return int.TryParse(sanitizedInput, out int result) ? result : 0;

@@ -16,49 +16,31 @@ namespace ApliKasir_UI
 {
     public partial class EditTransaksi : Form
     {
-        private static string jsonFilePath = "json\\transaksi.json";
         private string baseUrl = "https://localhost:7222";
-        private List<DataTransaksi> dataTransaksi;
+        private int idTransaksi;
 
         public static DataTransaksi DataBoundItem { get; private set; }
 
-        public EditTransaksi()
+        public EditTransaksi(int idTransaksi)
         {
             InitializeComponent();
-            LoadData();
-
-        }
-
-        private async Task LoadData()
-        {
-            //input data transaksi ke data gridview
-            dataTransaksi = await Hitung.GetListTransaksi(baseUrl);
-
-        }
-        private void EditForm_Load(object sender, EventArgs e)
-        {
-
-        }
-      
-
-        private void inputId_TextChanged(object sender, EventArgs e)
-        {
-
+            this.idTransaksi = idTransaksi;
         }
 
         private async void updatebtn_Click(object sender, EventArgs e)
         {
-            if (EditTransaksi.DataBoundItem is DataTransaksi selectedDataTransaksi)
+            int jumlahBarang;
+            if (int.TryParse(inputJumlahBarang.Text, out jumlahBarang))
             {
-                //mengedit data dengan method BuatTransaksi baru
-                Hitung.CreateTransaksi(baseUrl, selectedDataTransaksi);
-                MessageBox.Show("Data berhasil diedit");
-                LoadData();
+                var dataTransaksi = new DataTransaksi
+                {
+                    idTransaksi = this.idTransaksi,
+                    namaBarang = inputNamaBarang.Text,
+                    jumlahBarang = jumlahBarang
+                };
+                await Hitung.UpdateTransaksi(baseUrl, idTransaksi, dataTransaksi);
+                this.Close();
             }
-            else
-            {   //memanggil MessageBox jika input tidak valid
-                MessageBox.Show("Data yang dimasukkan tidak valid.");
-            }   
         }
     }
 }

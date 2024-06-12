@@ -28,10 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UIEdit));
             panelBg = new Panel();
             label1 = new Label();
-            button4 = new Button();
+            buttonLogout = new Button();
             buttonEdit = new Button();
             buttonHapus = new Button();
             buttonTambah = new Button();
@@ -41,7 +40,7 @@
             transaksiTabel = new DataGridView();
             label3 = new Label();
             hutangTabel = new DataGridView();
-            button1 = new Button();
+            buttonEditTransaksi = new Button();
             panelBg.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)transaksiTabel).BeginInit();
             ((System.ComponentModel.ISupportInitialize)hutangTabel).BeginInit();
@@ -49,9 +48,9 @@
             // 
             // panelBg
             // 
-            panelBg.BackColor = Color.DarkTurquoise;
+            panelBg.BackColor = Color.Crimson;
             panelBg.Controls.Add(label1);
-            panelBg.Controls.Add(button4);
+            panelBg.Controls.Add(buttonLogout);
             panelBg.Controls.Add(buttonEdit);
             panelBg.Controls.Add(buttonHapus);
             panelBg.Controls.Add(buttonTambah);
@@ -70,20 +69,21 @@
             label1.ForeColor = Color.White;
             label1.Location = new Point(9, 10);
             label1.Name = "label1";
-            label1.Size = new Size(231, 65);
+            label1.Size = new Size(155, 45);
             label1.TabIndex = 6;
             label1.Text = "ApliKasir";
             // 
-            // button4
+            // buttonLogout
             // 
-            button4.BackColor = Color.Brown;
-            button4.FlatStyle = FlatStyle.Flat;
-            button4.Location = new Point(48, 467);
-            button4.Name = "button4";
-            button4.Size = new Size(75, 29);
-            button4.TabIndex = 5;
-            button4.Text = "Logout";
-            button4.UseVisualStyleBackColor = false;
+            buttonLogout.BackColor = Color.White;
+            buttonLogout.FlatStyle = FlatStyle.Flat;
+            buttonLogout.Location = new Point(48, 467);
+            buttonLogout.Name = "buttonLogout";
+            buttonLogout.Size = new Size(75, 29);
+            buttonLogout.TabIndex = 5;
+            buttonLogout.Text = "Logout";
+            buttonLogout.UseVisualStyleBackColor = false;
+            buttonLogout.Click += buttonLogout_Click;
             // 
             // buttonEdit
             // 
@@ -107,6 +107,7 @@
             buttonHapus.TabIndex = 3;
             buttonHapus.Text = "Hapus Transaksi/Hutang";
             buttonHapus.UseVisualStyleBackColor = false;
+            buttonHapus.Click += buttonHapus_Click;
             // 
             // buttonTambah
             // 
@@ -118,6 +119,7 @@
             buttonTambah.TabIndex = 2;
             buttonTambah.Text = "Tambah Transaksi/Hutang";
             buttonTambah.UseVisualStyleBackColor = false;
+            buttonTambah.Click += buttonTambah_Click;
             // 
             // buttonDataBarang
             // 
@@ -130,6 +132,7 @@
             buttonDataBarang.TabIndex = 1;
             buttonDataBarang.Text = "Data Barang";
             buttonDataBarang.UseVisualStyleBackColor = false;
+            buttonDataBarang.Click += buttonDataBarang_Click;
             // 
             // buttonLaporan
             // 
@@ -143,6 +146,7 @@
             buttonLaporan.TabIndex = 0;
             buttonLaporan.Text = "Laporan";
             buttonLaporan.UseVisualStyleBackColor = false;
+            buttonLaporan.Click += buttonLaporan_Click;
             // 
             // label2
             // 
@@ -185,23 +189,23 @@
             hutangTabel.Size = new Size(549, 134);
             hutangTabel.TabIndex = 11;
             // 
-            // button1
+            // buttonEditTransaksi
             // 
-            button1.Font = new Font("Segoe UI", 9.75F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            button1.Location = new Point(209, 437);
-            button1.Name = "button1";
-            button1.Size = new Size(89, 33);
-            button1.TabIndex = 12;
-            button1.Text = "Edit data";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click_1;
+            buttonEditTransaksi.Font = new Font("Segoe UI", 9.75F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            buttonEditTransaksi.Location = new Point(209, 437);
+            buttonEditTransaksi.Name = "buttonEditTransaksi";
+            buttonEditTransaksi.Size = new Size(89, 33);
+            buttonEditTransaksi.TabIndex = 12;
+            buttonEditTransaksi.Text = "Edit data";
+            buttonEditTransaksi.UseVisualStyleBackColor = true;
+            buttonEditTransaksi.Click += buttonEditTransaksi_Click;
             // 
             // UIEdit
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 510);
-            Controls.Add(button1);
+            Controls.Add(buttonEditTransaksi);
             Controls.Add(hutangTabel);
             Controls.Add(label3);
             Controls.Add(transaksiTabel);
@@ -225,13 +229,13 @@
         private Button buttonDataBarang;
         private Button buttonTambah;
         private Button buttonHapus;
-        private Button button4;
+        private Button buttonLogout;
         private Button buttonEdit;
         private Label label1;
         private Label label2;
         private DataGridView transaksiTabel;
         private Label label3;
         private DataGridView hutangTabel;
-        private Button button1;
+        private Button buttonEditTransaksi;
     }
 }

@@ -15,7 +15,7 @@ namespace ApliKasir_UI
         }
 
         // Event handler untuk tombol klik
-        private async void button1_Click(object sender, EventArgs e)
+        private async void buttonSimpan_Click(object sender, EventArgs e)
         {
             var dataHutang = new DataHutang();
 

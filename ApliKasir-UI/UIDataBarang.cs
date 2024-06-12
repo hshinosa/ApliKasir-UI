@@ -1,4 +1,5 @@
-﻿using LibraryKasir;
+﻿using API.Controllers;
+using LibraryKasir;
 
 namespace ApliKasir_UI
 {
@@ -41,7 +42,21 @@ namespace ApliKasir_UI
         {
             if (dataGridBarang.SelectedRows.Count > 0)
             {
-                EditSelectedBarang();
+                DataGridViewRow selectedRow = dataGridBarang.SelectedRows[0];
+                if (selectedRow.DataBoundItem is DataBarang selectedDataBarang)
+                {
+                    int idBarang = selectedDataBarang.idBarang;
+                    this.Hide();
+                    using (EditBarang editBarang = new EditBarang(idBarang))
+                    {
+                        editBarang.ShowDialog();
+                    }
+                    this.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Data yang dipilih tidak valid.");
+                }
             }
             else
             {
@@ -68,7 +83,7 @@ namespace ApliKasir_UI
                 _listDataBarang.Remove(item);
             }
 
-            API.EditJsonBarang.SaveDataToJsonFile(_listDataBarang);
+            EditJson.SaveDataBarangToJsonFile(_listDataBarang);
         }
 
         // Metode untuk memperbarui data grid dengan daftar data barang yang telah diperbarui
@@ -76,26 +91,6 @@ namespace ApliKasir_UI
         {
             dataGridBarang.DataSource = null;
             dataGridBarang.DataSource = _listDataBarang;
-        }
-
-        // Metode untuk mengedit barang yang dipilih dan menampilkan form EditBarang
-        private void EditSelectedBarang()
-        {
-            DataGridViewRow selectedRow = dataGridBarang.SelectedRows[0];
-            if (selectedRow.DataBoundItem is DataBarang selectedDataBarang)
-            {
-                int idBarang = selectedDataBarang.idBarang;
-                this.Hide();
-                using (EditBarang editBarang = new EditBarang(idBarang))
-                {
-                    editBarang.ShowDialog();
-                }
-                this.Show();
-            }
-            else
-            {
-                MessageBox.Show("Data yang dipilih tidak valid.");
-            }
         }
 
         // Metode generik untuk menampilkan form tipe T
@@ -120,7 +115,11 @@ namespace ApliKasir_UI
 
         private void buttonHapus_Click(object sender, EventArgs e) => ShowForm<UIHapus>();
 
-        private void buttonLogOut_Click(object sender, EventArgs e) => ShowForm<Login>();
+        private void buttonLogout_Click(object sender, EventArgs e)
+        {
+            Close(); // Menutup form MenuUtama
+            Application.Restart(); // Me-restart aplikasi untuk kembali ke form Login
+        }
 
         private void buttonEdit_Click(object sender, EventArgs e) => ShowForm<UIEdit>();
     }

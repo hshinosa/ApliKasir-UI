@@ -57,93 +57,64 @@ namespace ApliKasir_UI
         // Metode untuk menangani klik tombol login
         private async void buttonLogin_Click(object sender, EventArgs e)
         {
-            // Mendapatkan username dan password dari input pengguna
             string username = textBoxUsername.Text;
             string password = textBoxPassword.Text;
 
-            // Memeriksa apakah username atau password kosong
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
             {
                 MessageBox.Show("Tolong isi username dan password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // Membuat objek DataUser baru untuk login
-            DataUser loginUser = new DataUser { Username = username, Password = PasswordHasher.HashPassword(password) };
-
             try
             {
-                using (HttpClient client = new HttpClient())
-                {
-                    string jsonData = JsonConvert.SerializeObject(loginUser);
-                    StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-                    HttpResponseMessage response = await client.PostAsync($"{_apiBaseUrl}/login", content);
+                bool loginSuccess = await LoginService.Instance.LoginUser(username, password);
 
-                    if (response.IsSuccessStatusCode)
+                if (loginSuccess)
+                {
+                    MessageBox.Show("Login sukses!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Hide();
+                    using (MenuUtama menuUtama = new MenuUtama())
                     {
-                        MessageBox.Show("Login sukses!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        // Menyembunyikan form login dan menampilkan menu utama
-                        this.Hide();
-                        using (MenuUtama menuUtama = new MenuUtama())
-                        {
-                            menuUtama.ShowDialog();
-                        }
-                        this.Show();
+                        menuUtama.ShowDialog();
                     }
-                    else
-                    {
-                        MessageBox.Show("Username atau password salah.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    this.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Username atau password salah.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Login gagal: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         // Metode untuk menangani klik tombol register
         private async void buttonRegister_Click(object sender, EventArgs e)
         {
-            // Mendapatkan username dan password dari input pengguna
             string username = textBoxUsername.Text;
             string password = textBoxPassword.Text;
 
-            // Memeriksa apakah username atau password kosong
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
             {
                 MessageBox.Show("Tolong isi username dan password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // Membuat objek DataUser baru untuk registrasi
-            DataUser newUser = new DataUser { Username = username, Password = PasswordHasher.HashPassword(password) };
-
             try
             {
-                using (HttpClient client = new HttpClient())
-                {
-                    string jsonData = JsonConvert.SerializeObject(newUser);
-                    StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-                    HttpResponseMessage response = await client.PostAsync(_apiBaseUrl, content);
+                bool registerSuccess = await RegisterService.Instance.RegisterUser(username, password);
 
-                    if (response.IsSuccessStatusCode)
-                    {
-                        MessageBox.Show("Register berhasil!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else if (response.StatusCode == HttpStatusCode.Conflict)
-                    {
-                        MessageBox.Show("Username sudah ada. Tolong buat username yang lain.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else
-                    {
-                        MessageBox.Show($"Gagal mendaftarkan pengguna: {response.StatusCode}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                if (registerSuccess)
+                {
+                    MessageBox.Show("Register berhasil!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Gagal mendaftarkan pengguna: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

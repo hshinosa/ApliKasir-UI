@@ -1,7 +1,7 @@
 ﻿using LibraryKasir;
 using Newtonsoft.Json;
 
-namespace API
+namespace API.Controllers
 {
     public class EditJson
     {
@@ -16,9 +16,9 @@ namespace API
         public static List<DataBarang> InitializeDataFromJsonBarang(string jsonFilePath)
         {
             List<DataBarang> data = new List<DataBarang>();
-            if (System.IO.File.Exists(jsonFilePath))
+            if (File.Exists(jsonFilePath))
             {
-                string jsonData = System.IO.File.ReadAllText(jsonFilePath);
+                string jsonData = File.ReadAllText(jsonFilePath);
                 data = JsonConvert.DeserializeObject<List<DataBarang>>(jsonData);
             }
             return data;
@@ -27,14 +27,14 @@ namespace API
         public static void SaveDataBarangToJsonFile(List<DataBarang> data)
         {
             string jsonData = JsonConvert.SerializeObject(data, Formatting.Indented);
-            System.IO.File.WriteAllText(jsonFilePath, jsonData);
+            File.WriteAllText(jsonFilePath, jsonData);
         }
         public static List<DataTransaksi> InitializeDataFromJsonTransaksi(string jsonFilePath2)
         {
             List<DataTransaksi> data = new List<DataTransaksi>();
-            if (System.IO.File.Exists(jsonFilePath2))
+            if (File.Exists(jsonFilePath2))
             {
-                string jsonData = System.IO.File.ReadAllText(jsonFilePath2);
+                string jsonData = File.ReadAllText(jsonFilePath2);
                 data = JsonConvert.DeserializeObject<List<DataTransaksi>>(jsonData);
             }
             return data;
@@ -44,17 +44,17 @@ namespace API
         public static void SaveDataTransaksiToJsonFile(List<DataTransaksi> data)
         {
             string jsonData = JsonConvert.SerializeObject(data, Formatting.Indented);
-            System.IO.File.WriteAllText(jsonFilePath2, jsonData);
+            File.WriteAllText(jsonFilePath2, jsonData);
         }
 
-        
+
 
         public static List<DataHutang> InitializeDataFromJsonHutang(string jsonFilePath3)
         {
             List<DataHutang> data = new List<DataHutang>();
-            if (System.IO.File.Exists(jsonFilePath3))
+            if (File.Exists(jsonFilePath3))
             {
-                string jsonData = System.IO.File.ReadAllText(jsonFilePath3);
+                string jsonData = File.ReadAllText(jsonFilePath3);
                 data = JsonConvert.DeserializeObject<List<DataHutang>>(jsonData);
             }
             return data;
@@ -64,13 +64,13 @@ namespace API
         public static void SaveDataHutangToJsonFile(List<DataHutang> data)
         {
             string jsonData = JsonConvert.SerializeObject(data, Formatting.Indented);
-            System.IO.File.WriteAllText(jsonFilePath3, jsonData);
+            File.WriteAllText(jsonFilePath3, jsonData);
         }
 
     }
-    
+
 }
 
-   
+
 
 

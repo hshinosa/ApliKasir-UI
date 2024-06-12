@@ -10,8 +10,6 @@ namespace ApliKasir_UI
 {
     public partial class UITambah : Form
     {
-        private static readonly string jsonFilePath1 = "D:\\IYA\\API\\json\\transaksi.json";
-        private static readonly string jsonFilePath2 = "D:\\IYA\\API\\json\\hutang.json";
         private readonly string baseUrl = "https://localhost:7222";
         private List<DataTransaksi> dataTransaksi;
         private List<DataHutang> dataHutang;
@@ -63,10 +61,10 @@ namespace ApliKasir_UI
             inputTransaksi.Show();
         }
 
-        
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
         }
 
         // Event handler untuk tombol Tambah Hutang
@@ -75,5 +73,24 @@ namespace ApliKasir_UI
             InputHutang inputHutang = new InputHutang();
             inputHutang.Show();
         }
+
+        private void ShowForm<T>() where T : Form, new()
+        {
+            Hide();
+            using (T form = new T())
+            {
+                form.ShowDialog();
+            }
+            Show();
+        }
+
+        private void buttonDataBarang_Click(object sender, EventArgs e) => ShowForm<UIDataBarang>();
+
+        private void buttonLaporan_Click(object sender, EventArgs e) => ShowForm<MenuUtama>();
+
+        private void buttonHapus_Click(object sender, EventArgs e) => ShowForm<UIHapus>();
+
+        private void buttonEdit_Click(object sender, EventArgs e) => ShowForm<UIEdit>();
+
     }
 }

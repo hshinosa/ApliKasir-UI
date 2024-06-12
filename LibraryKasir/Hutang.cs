@@ -70,5 +70,25 @@ namespace LibraryKasir
                 }
             }
         }
+
+        public static async Task UpdateHutang(string baseUrl, int idHutang, DataHutang updatedHutang)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    string json = JsonSerializer.Serialize(updatedHutang);
+                    HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                    HttpResponseMessage response = await client.PutAsync($"{baseUrl}/DataHutang/{idHutang}", content);
+                    response.EnsureSuccessStatusCode(); // Ensures throwing an exception if the HTTP response status indicates failure
+
+                    Console.WriteLine($"Hutang with ID {idHutang} has been successfully updated.");
+                }
+                catch (HttpRequestException ex)
+                {
+                    Console.WriteLine($"Error updating Hutang: {ex.Message}");
+                }
+            }
+        }
     }
 }

@@ -89,29 +89,31 @@
             // 
             buttonEdit.BackColor = Color.White;
             buttonEdit.FlatStyle = FlatStyle.Flat;
-            buttonEdit.Location = new Point(3, 263);
+            buttonEdit.Location = new Point(3, 266);
             buttonEdit.Name = "buttonEdit";
             buttonEdit.Size = new Size(167, 28);
             buttonEdit.TabIndex = 4;
             buttonEdit.Text = "Edit Transaksi/Hutang";
             buttonEdit.UseVisualStyleBackColor = false;
+            buttonEdit.Click += buttonEdit_Click;
             // 
             // buttonHapus
             // 
             buttonHapus.BackColor = Color.White;
             buttonHapus.FlatStyle = FlatStyle.Flat;
-            buttonHapus.Location = new Point(3, 229);
+            buttonHapus.Location = new Point(3, 232);
             buttonHapus.Name = "buttonHapus";
             buttonHapus.Size = new Size(167, 28);
             buttonHapus.TabIndex = 3;
             buttonHapus.Text = "Hapus Transaksi/Hutang";
             buttonHapus.UseVisualStyleBackColor = false;
+            buttonHapus.Click += buttonHapus_Click;
             // 
             // buttonTambah
             // 
             buttonTambah.BackColor = Color.White;
             buttonTambah.FlatStyle = FlatStyle.Flat;
-            buttonTambah.Location = new Point(3, 196);
+            buttonTambah.Location = new Point(3, 199);
             buttonTambah.Name = "buttonTambah";
             buttonTambah.Size = new Size(167, 27);
             buttonTambah.TabIndex = 2;
@@ -123,12 +125,13 @@
             buttonDataBarang.BackColor = Color.White;
             buttonDataBarang.FlatStyle = FlatStyle.Flat;
             buttonDataBarang.ForeColor = SystemColors.ControlText;
-            buttonDataBarang.Location = new Point(3, 164);
+            buttonDataBarang.Location = new Point(3, 167);
             buttonDataBarang.Name = "buttonDataBarang";
             buttonDataBarang.Size = new Size(167, 26);
             buttonDataBarang.TabIndex = 1;
             buttonDataBarang.Text = "Data Barang";
             buttonDataBarang.UseVisualStyleBackColor = false;
+            buttonDataBarang.Click += buttonDataBarang_Click;
             // 
             // buttonLaporan
             // 
@@ -138,10 +141,11 @@
             buttonLaporan.ForeColor = SystemColors.ControlText;
             buttonLaporan.Location = new Point(3, 135);
             buttonLaporan.Name = "buttonLaporan";
-            buttonLaporan.Size = new Size(167, 23);
+            buttonLaporan.Size = new Size(167, 26);
             buttonLaporan.TabIndex = 0;
             buttonLaporan.Text = "Laporan";
             buttonLaporan.UseVisualStyleBackColor = false;
+            buttonLaporan.Click += buttonLaporan_Click;
             // 
             // dataGridView1
             // 

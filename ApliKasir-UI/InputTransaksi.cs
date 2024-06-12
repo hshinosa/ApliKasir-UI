@@ -14,14 +14,8 @@ namespace ApliKasir_UI
             InitializeComponent();
         }
 
-        
-        private void label4_Click(object sender, EventArgs e)
-        {
-           
-        }
-
         // Event handler untuk klik pada tombol
-        private async void button1_Click(object sender, EventArgs e)
+        private async void buttonSimpan_Click(object sender, EventArgs e)
         {
             var dataTransaksi = new DataTransaksi();
 
@@ -44,12 +38,6 @@ namespace ApliKasir_UI
 
             // Menyembunyikan form setelah data transaksi berhasil ditambahkan
             this.Hide();
-        }
-
-        
-        private void InputTransaksi_Load(object sender, EventArgs e)
-        {
-            
         }
 
         // Fungsi untuk membersihkan input menggunakan regex

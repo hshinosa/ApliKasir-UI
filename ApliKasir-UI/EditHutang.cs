@@ -13,36 +13,30 @@ namespace ApliKasir_UI
 {
     public partial class EditHutang : Form
     {
-        private static string jsonFilePath2 = "json\\hutang.json";
         private string baseUrl = "https://localhost:7222";
-        private List<DataHutang> dataHutang;
+        private int idHutang;
 
         public static DataHutang DataBoundItem { get; set; }
-        public EditHutang()
+        public EditHutang(int idHutang)
         {
             InitializeComponent();
-            LoadData();
+            this.idHutang = idHutang;
         }
 
-        private async Task LoadData()
+        private async void UpdateBtn_Click(object sender, EventArgs e)
         {
-            //input data transaksi ke data gridview
-            dataHutang = await Hutang.GetListHutang(baseUrl);
-
-        }
-
-        private void UpdateBtn_Click(object sender, EventArgs e)
-        {
-            if (EditHutang.DataBoundItem is DataHutang selectedDataHutang)
+            int jumlahBarang;
+            if (int.TryParse(inputJumlahBarang.Text, out jumlahBarang))
             {
-                //mengedit data dengan method BuatHutang baru
-                Hitung.CreateHutang(baseUrl, selectedDataHutang);
-                MessageBox.Show("Data berhasil diedit");
-                LoadData();
-            }
-            else
-            {   //memanggil MessageBox jika input tidak valid
-                MessageBox.Show("Data yang dimasukkan tidak valid.");
+                var dataHutang = new DataHutang
+                {
+                    idHutang = this.idHutang,
+                    namaPelanggan = inputNamaPelanggan.Text,
+                    namaBarang = inputNamaBarang.Text,
+                    jumlahBarang = jumlahBarang
+                };
+                await Hutang.UpdateHutang(baseUrl, idHutang, dataHutang);
+                this.Close();
             }
         }
     }

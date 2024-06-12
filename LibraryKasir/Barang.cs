@@ -78,7 +78,6 @@ namespace LibraryKasir
                 {
                     string json = JsonSerializer.Serialize(updatedBarang);
                     HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
-                    // Using PUT method to update data
                     HttpResponseMessage response = await client.PutAsync($"{baseUrl}/DataBarang/{idBarang}", content);
                     response.EnsureSuccessStatusCode(); // Ensures throwing an exception if the HTTP response status indicates failure
 
@@ -90,6 +89,5 @@ namespace LibraryKasir
                 }
             }
         }
-
     }
 }
