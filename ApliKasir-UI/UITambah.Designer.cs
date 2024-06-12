@@ -36,7 +36,16 @@
             buttonTambah = new Button();
             buttonDataBarang = new Button();
             buttonLaporan = new Button();
+            dataGridView1 = new DataGridView();
+            label2 = new Label();
+            button1 = new Button();
+            button2 = new Button();
+            dataGridView2 = new DataGridView();
+            label3 = new Label();
+            button3 = new Button();
             panelBg.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
             // 
             // panelBg
@@ -134,17 +143,94 @@
             buttonLaporan.Text = "Laporan";
             buttonLaporan.UseVisualStyleBackColor = false;
             // 
-            // UIDataBarang
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(249, 72);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(476, 118);
+            dataGridView1.TabIndex = 1;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(410, 24);
+            label2.Name = "label2";
+            label2.Size = new Size(155, 30);
+            label2.TabIndex = 2;
+            label2.Text = "Tabel Transaksi";
+            // 
+            // button1
+            // 
+            button1.Location = new Point(249, 412);
+            button1.Name = "button1";
+            button1.Size = new Size(125, 26);
+            button1.TabIndex = 3;
+            button1.Text = "Refresh";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(425, 412);
+            button2.Name = "button2";
+            button2.Size = new Size(125, 26);
+            button2.TabIndex = 4;
+            button2.Text = "Tambah Transaksi";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
+            // dataGridView2
+            // 
+            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.Location = new Point(249, 254);
+            dataGridView2.Name = "dataGridView2";
+            dataGridView2.Size = new Size(476, 117);
+            dataGridView2.TabIndex = 5;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(410, 210);
+            label3.Name = "label3";
+            label3.Size = new Size(140, 30);
+            label3.TabIndex = 6;
+            label3.Text = "Tabel Hutang";
+            // 
+            // button3
+            // 
+            button3.Location = new Point(600, 412);
+            button3.Name = "button3";
+            button3.Size = new Size(125, 26);
+            button3.TabIndex = 7;
+            button3.Text = "Tambah Hutang";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
+            // 
+            // UITambah
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button3);
+            Controls.Add(label3);
+            Controls.Add(dataGridView2);
+            Controls.Add(button2);
+            Controls.Add(button1);
+            Controls.Add(label2);
+            Controls.Add(dataGridView1);
             Controls.Add(panelBg);
-            Name = "UIDataBarang";
+            Name = "UITambah";
             Text = "ApliKasir";
             panelBg.ResumeLayout(false);
             panelBg.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -157,5 +243,12 @@
         private Button button4;
         private Button buttonEdit;
         private Label label1;
+        private DataGridView dataGridView1;
+        private Label label2;
+        private Button button1;
+        private Button button2;
+        private DataGridView dataGridView2;
+        private Label label3;
+        private Button button3;
     }
 }

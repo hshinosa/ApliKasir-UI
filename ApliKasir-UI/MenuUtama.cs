@@ -84,5 +84,12 @@ namespace ApliKasir_UI
                 editForm.ShowDialog();
             }
         }
+
+        private void buttonTambah_Click(object sender, EventArgs e)
+        {
+            UITambah dataTambahForm = new UITambah();
+            dataTambahForm.Show();
+            this.Hide();
+        }
     }
 }

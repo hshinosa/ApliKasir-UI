@@ -44,6 +44,8 @@
             dataGridBarang = new DataGridView();
             dataGridTransaksi = new DataGridView();
             dataGridHutang = new DataGridView();
+            button4 = new Button();
+            label1 = new Label();
             panelBg.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridBarang).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridTransaksi).BeginInit();
@@ -64,8 +66,6 @@
             panelBg.Margin = new Padding(3, 4, 3, 4);
             panelBg.Name = "panelBg";
             panelBg.Size = new Size(198, 601);
-            panelBg.TabIndex = 0;
-            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -127,6 +127,8 @@
             buttonTambah.Text = "Tambah Transaksi/Hutang";
             buttonTambah.UseVisualStyleBackColor = false;
             buttonTambah.Click += buttonTambah_Click;
+            // 
+            panelBg.TabIndex = 0;
             // 
             // buttonDataBarang
             // 
@@ -203,8 +205,6 @@
             labelHutang.Name = "labelHutang";
             labelHutang.Size = new Size(88, 33);
             labelHutang.TabIndex = 5;
-            labelHutang.Text = "Hutang";
-            // 
             // dataGridBarang
             // 
             dataGridBarang.BackgroundColor = SystemColors.GradientInactiveCaption;
@@ -238,6 +238,29 @@
             dataGridHutang.RowHeadersWidth = 62;
             dataGridHutang.Size = new Size(271, 357);
             dataGridHutang.TabIndex = 9;
+            // 
+            // 
+            // button4
+            // 
+            button4.BackColor = Color.White;
+            button4.FlatStyle = FlatStyle.Flat;
+            button4.Location = new Point(48, 412);
+            button4.Name = "button4";
+            button4.Size = new Size(75, 26);
+            button4.TabIndex = 5;
+            button4.Text = "Logout";
+            button4.UseVisualStyleBackColor = false;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(9, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(155, 45);
+            label1.TabIndex = 6;
+            label1.Text = "ApliKasir";
             // 
             // MenuUtama
             // 
