@@ -87,6 +87,7 @@ namespace ApliKasir_UI
                     }
                 }
 
+
                 //penggunaan percabangan untuk tabel hutang
                 else if (hutangTabel.SelectedRows.Count > 0)
                 {
