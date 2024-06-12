@@ -1,6 +1,6 @@
 ﻿namespace ApliKasir_UI
 {
-    partial class InitializeComponents
+    partial class UIEdit : System.Windows.Forms.Form
     {
         /// <summary>
         /// Required designer variable.

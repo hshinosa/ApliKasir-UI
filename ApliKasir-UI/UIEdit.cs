@@ -171,7 +171,6 @@ namespace ApliKasir_UI
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 string query = "INSERT INTO Produk (Nama, Harga, Jumlah) VALUES (@Nama, @Harga, @Jumlah)";
-                using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@Nama", productName);
                     command.Parameters.AddWithValue("@Harga", price);
