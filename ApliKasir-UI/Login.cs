@@ -88,7 +88,7 @@ namespace ApliKasir_UI
                         {
                             menuUtama.ShowDialog();
                         }
-                        this.Close();
+                        this.Show();
                     }
                     else
                     {
@@ -156,10 +156,8 @@ namespace ApliKasir_UI
                     form.Close();
                 }
             }
-
-            // Menutup form utama
+            // Menutup form utama (jika diperlukan)
             this.Close();
         }
-
     }
 }

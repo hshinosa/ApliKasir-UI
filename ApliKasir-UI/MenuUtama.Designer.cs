@@ -55,8 +55,9 @@
             panelBg.Controls.Add(buttonDataBarang);
             panelBg.Controls.Add(buttonLaporan);
             panelBg.Location = new Point(0, 0);
+            panelBg.Margin = new Padding(3, 4, 3, 4);
             panelBg.Name = "panelBg";
-            panelBg.Size = new Size(173, 451);
+            panelBg.Size = new Size(198, 601);
             panelBg.TabIndex = 0;
             // 
             // label1
@@ -123,9 +124,10 @@
             buttonDataBarang.BackColor = Color.White;
             buttonDataBarang.FlatStyle = FlatStyle.Flat;
             buttonDataBarang.ForeColor = SystemColors.ControlText;
-            buttonDataBarang.Location = new Point(3, 164);
+            buttonDataBarang.Location = new Point(3, 219);
+            buttonDataBarang.Margin = new Padding(3, 4, 3, 4);
             buttonDataBarang.Name = "buttonDataBarang";
-            buttonDataBarang.Size = new Size(167, 26);
+            buttonDataBarang.Size = new Size(191, 35);
             buttonDataBarang.TabIndex = 1;
             buttonDataBarang.Text = "Data Barang";
             buttonDataBarang.UseVisualStyleBackColor = false;
@@ -137,9 +139,10 @@
             buttonLaporan.FlatStyle = FlatStyle.Flat;
             buttonLaporan.Font = new Font("Segoe UI", 9F);
             buttonLaporan.ForeColor = SystemColors.ControlText;
-            buttonLaporan.Location = new Point(3, 135);
+            buttonLaporan.Location = new Point(3, 180);
+            buttonLaporan.Margin = new Padding(3, 4, 3, 4);
             buttonLaporan.Name = "buttonLaporan";
-            buttonLaporan.Size = new Size(167, 23);
+            buttonLaporan.Size = new Size(191, 31);
             buttonLaporan.TabIndex = 0;
             buttonLaporan.Text = "Laporan";
             buttonLaporan.UseVisualStyleBackColor = false;
@@ -148,9 +151,9 @@
             // 
             labelLaporan.AutoSize = true;
             labelLaporan.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            labelLaporan.Location = new Point(433, 9);
+            labelLaporan.Location = new Point(495, 12);
             labelLaporan.Name = "labelLaporan";
-            labelLaporan.Size = new Size(91, 30);
+            labelLaporan.Size = new Size(116, 37);
             labelLaporan.TabIndex = 1;
             labelLaporan.Text = "Laporan";
             labelLaporan.TextAlign = ContentAlignment.TopCenter;
@@ -158,50 +161,51 @@
             // labelStokBarang
             // 
             labelStokBarang.AutoSize = true;
-            labelStokBarang.Location = new Point(233, 96);
+            labelStokBarang.Location = new Point(266, 128);
             labelStokBarang.Name = "labelStokBarang";
-            labelStokBarang.Size = new Size(70, 15);
+            labelStokBarang.Size = new Size(89, 20);
             labelStokBarang.TabIndex = 2;
             labelStokBarang.Text = "Stok Barang";
             // 
             // labelPemasukan
             // 
             labelPemasukan.AutoSize = true;
-            labelPemasukan.Location = new Point(558, 96);
+            labelPemasukan.Location = new Point(638, 128);
             labelPemasukan.Name = "labelPemasukan";
-            labelPemasukan.Size = new Size(68, 15);
+            labelPemasukan.Size = new Size(82, 20);
             labelPemasukan.TabIndex = 3;
             labelPemasukan.Text = "Pemasukan";
             // 
             // labelPengeluaran
             // 
             labelPengeluaran.AutoSize = true;
-            labelPengeluaran.Location = new Point(233, 260);
+            labelPengeluaran.Location = new Point(266, 347);
             labelPengeluaran.Name = "labelPengeluaran";
-            labelPengeluaran.Size = new Size(73, 15);
+            labelPengeluaran.Size = new Size(90, 20);
             labelPengeluaran.TabIndex = 4;
             labelPengeluaran.Text = "Pengeluaran";
             // 
             // labelHutang
             // 
             labelHutang.AutoSize = true;
-            labelHutang.Location = new Point(558, 260);
+            labelHutang.Location = new Point(638, 347);
             labelHutang.Name = "labelHutang";
-            labelHutang.Size = new Size(47, 15);
+            labelHutang.Size = new Size(58, 20);
             labelHutang.TabIndex = 5;
             labelHutang.Text = "Hutang";
             // 
             // MenuUtama
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(914, 600);
             Controls.Add(labelHutang);
             Controls.Add(labelPengeluaran);
             Controls.Add(labelPemasukan);
             Controls.Add(labelStokBarang);
             Controls.Add(labelLaporan);
             Controls.Add(panelBg);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "MenuUtama";
             Text = "ApliKasir";
             panelBg.ResumeLayout(false);

@@ -10,7 +10,6 @@ namespace ApliKasir_UI
         {
             InitializeComponent();
         }
-
         private void buttonLogout_Click(object sender, EventArgs e)
         {
             Close(); // Menutup form MenuUtama
