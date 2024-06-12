@@ -8,6 +8,7 @@ namespace LibraryKasir
 {
     public class DataTransaksi
     {
+        public static object SelectedRow { get; set; }
         public int idTransaksi { get; set; }
         public string namaBarang { get; set; }
         public int jumlahBarang { get; set; }

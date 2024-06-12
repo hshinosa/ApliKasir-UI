@@ -98,5 +98,12 @@ namespace ApliKasir_UI
             hapusForm.Show();
             this.Hide();
         }
+
+        private void buttonEdit_Click(object sender, EventArgs e)
+        {
+            UIEdit editForm = new UIEdit();
+            editForm.Show();
+            this.Hide();
+        }
     }
 }

@@ -98,5 +98,10 @@ namespace LibraryKasir
                 }
             }
         }
+
+        public static void CreateHutang(string baseUrl, DataHutang selectedDataHutang)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
